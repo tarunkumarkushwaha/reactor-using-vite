@@ -16,6 +16,9 @@ const Navbar = () => {
             <li>
               <NavLink to={"/todo"}>Todo</NavLink>
             </li>
+            <li>
+              <NavLink to={"/notepad"}>Notepad</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
