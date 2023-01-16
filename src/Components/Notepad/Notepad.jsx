@@ -4,14 +4,17 @@ function Notepad() {
     return (
         <>
             <Navbar />
-            <div>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
+            <div className="flex-row-center">
+        <button className="text-center">
+          Capitalize 1st letter
+        </button>
+        <button className="text-center">
+          Erase all
+        </button>
+        <button className="text-center">
+          Save
+        </button>
+      </div>
             <div className="border-black flex-row-center">
                 <textarea
                     rows="10" cols="100"
