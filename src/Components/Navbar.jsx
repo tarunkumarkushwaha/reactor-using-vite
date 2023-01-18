@@ -8,7 +8,7 @@ const Navbar = () => {
         <nav>
           <ul>
             <li>
-              <NavLink to={"/"}>NumberSorter</NavLink>
+              <NavLink to={"/"}>Notepad</NavLink>
             </li>
             <li>
               <NavLink to={"/calculator"}>Calculator</NavLink>
@@ -17,7 +17,7 @@ const Navbar = () => {
               <NavLink to={"/todo"}>Todo</NavLink>
             </li>
             <li>
-              <NavLink to={"/notepad"}>Notepad</NavLink>
+              <NavLink to={"/numbersorter"}>NumberSorter</NavLink>
             </li>
           </ul>
         </nav>

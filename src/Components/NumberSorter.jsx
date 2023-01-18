@@ -50,7 +50,7 @@ export default function NumberSorter() {
   };
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="flex-row-center">
         <div className="text-center border-black box">
           <p>Array of numbers</p>

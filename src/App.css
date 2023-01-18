@@ -153,6 +153,19 @@ button:hover {
   font-size: larger;
 }
 
+.outer2 {
+  background-color: #aaafc2;
+  margin: 15px auto;
+  padding: 10px;
+  width: 90vw;
+  height: 65vh;
+  font-size: larger;
+}
+
+.btn-list{
+ margin-top: 15px;
+}
+
 .to-do{
   background-color: #38a5ff;
   text-align: left;
