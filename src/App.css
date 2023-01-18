@@ -162,7 +162,7 @@ button:hover {
   font-size: larger;
 }
 
-.btn-list{
+#btn-list{
  margin-top: 15px;
 }
 
@@ -171,4 +171,12 @@ button:hover {
   text-align: left;
   padding: 5px;
   overflow-wrap: break-word;
+}
+
+.modal{
+  position: absolute;
+  top: 32vh;
+  left: 25vw;
+  background-color: #2b99ffe7;
+  padding: 10px 50px 0px 0px;
 }
