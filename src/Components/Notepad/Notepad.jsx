@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import Navbar from '../navbar'
+import Fontchange from './Fontchange'
 import Replacemodal from './Replacemodal'
-// import {prevword,newword} from './Replacemodal'
 function Notepad() {
+  // states 
   const [notes, setNotes] = useState("")
   const [select, setSelect] = useState(false)
+  const [select2, setSelect2] = useState(false)
+  const [prevword, setPrevword] = useState("")
+  const [newword, setNewword] = useState("")
+  //  click handlers
   const upclick = () => {
     setNotes(notes.toUpperCase())
   }
@@ -13,10 +18,11 @@ function Notepad() {
     clipbrd.select()
     navigator.clipboard.writeText(clipbrd.value)
   }
-
-  const replace = () => {
-    setSelect(true)
-  }
+  const paste = async () => {
+      const text = await navigator.clipboard.readText();
+      setNotes(notes+text)
+    }
+  
   const downclick = () => {
     setNotes(notes.toLowerCase())
   }
@@ -24,23 +30,26 @@ function Notepad() {
     let arr = notes.split(" ")
     let arr2 = arr.map((n) => n.slice(0, 1).toUpperCase().concat(n.slice(1).toLowerCase()))
     setNotes(arr2.join(" "))
-    //  console.log(arr2.join(" "))
   }
   const eraseall = () => { setNotes("") }
+
   const displaychange = (e) => {
     setNotes(e.target.value)
   }
-  // jst for testing
-  let prevword = "pop"
-  let newword = "hop"
+  const replace = () => {
+    setSelect(true)
+  }
+  const changefont = () => {
+    setSelect2(true)
+  }
+  const closemodal2 = () => {
+    setSelect2(false)
+  }
   const closemodal = () => {
     setSelect(false)
     setNotes(notes.split(prevword + " ").join(newword + " "))
-    // console.log(cards.value);
+    // does not work with words ending with "."
   }
-  // const changefont=()=>{
-  //   console.log(cards,value)
-  // }
   return (
     <>
       <Navbar />
@@ -60,17 +69,18 @@ function Notepad() {
         <button className="text-center" onClick={copy}>
           Copy
         </button>
+        <button className="text-center" onClick={paste}>
+          Paste
+        </button>
         <button className="text-center" onClick={replace}>
           Replace
         </button>
-        {/* <select id="cards" onSelect={changefont}>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
-        </select> */}
+        <button className="text-center" onClick={changefont}>
+          Font
+        </button>
       </div>
-      {select ? <Replacemodal closemodal={closemodal} /> : null}
+      {select ? <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} /> : null}
+      {select2 ? <Fontchange closemodal2={closemodal2}/>:null}
       <div className="flex-row-center">
         <textarea
           id='textbox'

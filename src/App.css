@@ -180,3 +180,8 @@ button:hover {
   background-color: #2b99ffe7;
   padding: 10px 50px 0px 0px;
 }
+#cards{
+  margin: 10px;
+  padding: 5px;
+  width: auto;
+}
