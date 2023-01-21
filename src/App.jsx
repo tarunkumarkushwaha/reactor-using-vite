@@ -9,7 +9,6 @@ import Todo from "./Components/Todo";
 import Notepad from "./Components/Notepad/Notepad";
 import NumberSorter from "./Components/NumberSorter";
 function App() {
-  // let key = 5
   return (
     <>
       <div className="body">

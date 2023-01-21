@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Replacemodal = ({prevword,newword,setPrevword,setNewword,closemodal}) => {
-  // let prevword = "pop"
-  // let newword = "hop"
+const Replacemodal = ({ prevword, newword, setPrevword, setNewword, closemodal }) => {
   const onchange1 = (e) => {
     setPrevword(e.target.value)
   }
@@ -11,6 +9,7 @@ const Replacemodal = ({prevword,newword,setPrevword,setNewword,closemodal}) => {
   }
   return (
     <>
+      {/* no fade effect  */}
       <div className='modal border-black flex-row-center'>
         <input
           type="text"
@@ -32,4 +31,3 @@ const Replacemodal = ({prevword,newword,setPrevword,setNewword,closemodal}) => {
   )
 }
 export default Replacemodal
-// export { prevword, newword }
