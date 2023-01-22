@@ -2,17 +2,29 @@ import React, { useState } from 'react'
 import Navbar from '../navbar'
 import Replacemodal from './Replacemodal'
 function Notepad() {
+
   // states 
-  const [notes, setNotes] = useState("")
+  const [notes, setNotes] = useState(localStorage.getItem("key") ? localStorage.getItem("key") : "")
   const [select, setSelect] = useState(false)
   const [prevword, setPrevword] = useState("")
   const [newword, setNewword] = useState("")
   const [font, setFont] = useState("normal")
   const [size, setSize] = useState("larger")
 
+  // displaychange handler 
+  const displaychange = (e) => {
+    setNotes(e.target.value)
+    localStorage.setItem("key", e.target.value)
+  }
+
   //  click handlers
   const upclick = () => {
     setNotes(notes.toUpperCase())
+    localStorage.setItem("key", notes.toUpperCase())
+  }
+  const downclick = () => {
+    setNotes(notes.toLowerCase())
+    localStorage.setItem("key", notes.toLowerCase())
   }
   const copy = () => {
     let clipbrd = document.getElementById('textbox')
@@ -23,20 +35,17 @@ function Notepad() {
   const paste = async () => {
     const text = await navigator.clipboard.readText();
     setNotes(notes + text)
-  }
-
-  const downclick = () => {
-    setNotes(notes.toLowerCase())
+    localStorage.setItem("key", notes + text)
   }
   const capital1st = () => {
     let arr = notes.split(" ")
     let arr2 = arr.map((n) => n.slice(0, 1).toUpperCase().concat(n.slice(1).toLowerCase()))
     setNotes(arr2.join(" "))
+    localStorage.setItem("key", arr2.join(" "))
   }
-  const eraseall = () => { setNotes("") }
-
-  const displaychange = (e) => {
-    setNotes(e.target.value)
+  const eraseall = () => {
+    setNotes("")
+    localStorage.setItem("key", "")
   }
   const replace = () => {
     setSelect(true)
@@ -44,20 +53,28 @@ function Notepad() {
   const closemodal = () => {
     setSelect(false)
     setNotes(notes.split(prevword + " ").join(newword + " "))
+    localStorage.setItem("key", notes.split(prevword + " ").join(newword + " "))
   }
   const fontstylecng = () => {
     let cards = document.getElementById('cards')
-    console.log(cards.value);
     setFont(cards.value)
+    // localStorage.setItem("key",notes) bugg
   }
   const fontsizecng = () => {
     let cards2 = document.getElementById('cards2')
-    console.log(cards2.value);
     setSize(cards2.value)
+    // localStorage.setItem("key",notes)  bugg
   }
-  const requestTarunToDownload =()=>{
-     console.log("downloading your notes as txt")
-     alert("your notes will be downloaded as txt")
+  const requestTarunToDownload = () => {
+    // sourced from internet
+
+    const link = document.createElement("a");
+    const content = notes;
+    const file = new Blob([content], { type: 'text/plain' });
+    link.href = URL.createObjectURL(file);
+    link.download = "sample.txt";
+    link.click();
+    URL.revokeObjectURL(link.href);
   }
   return (
     <>

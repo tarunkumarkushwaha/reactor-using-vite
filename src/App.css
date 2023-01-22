@@ -7,7 +7,7 @@
   text-align: center;
   height: 50px;
   padding: 19px 0px 0px 0px;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #8c8cbd;
 }
 
@@ -17,7 +17,7 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   border: 1px solid rgb(22, 61, 187);
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 li {
@@ -26,7 +26,7 @@ li {
 
 nav {
   background-image: linear-gradient(45deg, #38a5ff 0%, #77a0ce 51%, #2b98ff 100%);
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 nav ul li a {
@@ -45,7 +45,7 @@ nav ul li a {
 .active {
   background-color: #3e8dc2;
   border: 1px solid rgb(22, 61, 187);
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 /* .listitem:hower {
@@ -133,13 +133,13 @@ button:hover, select:hover {
 }
 
 .border-black {
-  border-radius: 15px;
+  border-radius: 10px;
   border: 2px solid black;
 }
 
 .calculator {
   background-color: #7384c5;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 10px;
   width: 360px;
 }
@@ -149,7 +149,7 @@ button:hover, select:hover {
   margin: 50px auto;
   padding: 10px;
   width: 360px;
-  height: 60vh;
+  height: 57vh;
   font-size: larger;
 }
 
@@ -188,4 +188,11 @@ button:hover, select:hover {
   background-color: #b8b8be;
   width: 100px;
   height: 50px;
+}
+.footer{
+  background-color: linear-gradient(45deg, #38a5ff 0%, #77a0ce 51%, #2b98ff 100%);
+  text-align: center;
+  /* padding: 2px; */
+  border: 1px solid rgb(22, 61, 187);
+  border-radius: 10px;
 }
