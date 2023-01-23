@@ -81,7 +81,7 @@ function Notepad() {
       <Navbar />
       <div className="flex-row-center" id='btn-list' >
         <button className="text-center" onClick={capital1st}>
-          Capitalize 1st letter
+          Capitalize
         </button>
         <button className="text-center" onClick={upclick}>
           All Upper case

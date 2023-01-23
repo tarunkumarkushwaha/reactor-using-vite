@@ -95,6 +95,8 @@ nav ul li a {
 } */
 button {
   cursor: pointer;
+  font-weight: bold;
+  color: #000333;
   height: 50px;
   width: 100px;
   border-radius: 15px;
@@ -139,7 +141,7 @@ button:hover, select:hover {
 
 .calculator {
   background-color: #7384c5;
-  margin: 20px auto;
+  margin: 8px auto;
   padding: 10px;
   width: 360px;
 }
@@ -157,8 +159,8 @@ button:hover, select:hover {
   background-color: #aaafc2;
   margin: 15px auto;
   padding: 10px;
-  width: 90vw;
-  height: 55vh;
+  width: 96vw;
+  height: 53vh;
   font-size: larger;
 }
 
@@ -184,15 +186,35 @@ button:hover, select:hover {
   margin: 1px;
   padding: 5px;
   font-size: 15px;
-  font-weight: lighter;
+  font-weight: 550;
+  /* font-weight: bold; */
+  color: #000333;
   background-color: #b8b8be;
   width: 100px;
   height: 50px;
 }
 .footer{
-  background-color: linear-gradient(45deg, #38a5ff 0%, #77a0ce 51%, #2b98ff 100%);
+  background-color:  #8c8cbd;
   text-align: center;
   /* padding: 2px; */
   border: 1px solid rgb(22, 61, 187);
+  border-radius: 10px;
+}
+
+textarea{
+  resize: none;
+}
+
+.deletetodo{
+  cursor: pointer;
+  text-align: end;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #38a5ff;
+  border: 1px solid #000333;
+}
+
+.tododiv{
+  background-color: #38a5ff; 
   border-radius: 10px;
 }
