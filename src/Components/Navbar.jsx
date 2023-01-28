@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom'
 const Navbar = () => {
   return (
     <>
-    <header>
-        <h1 className='appname'>Utility Box</h1>
+      <header>
+        <div className="flex-row-center appnamediv">
+          <img className='appname' src="src\assets\image.png" alt="Utility Box" />
+        </div>
         <nav>
           <ul>
             <li>
@@ -16,13 +18,13 @@ const Navbar = () => {
             <li>
               <NavLink to={"/todo"}>Todo</NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to={"/numbersorter"}>NumberSorter</NavLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </header>
-      </>
+    </>
   )
 }
 

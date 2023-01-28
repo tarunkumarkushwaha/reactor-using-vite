@@ -3,12 +3,14 @@
   padding: 0;
 }
 
+.appnamediv{
+background-color:#bdd6eb;
+}
+
 .appname {
-  text-align: center;
-  height: 50px;
-  padding: 19px 0px 0px 0px;
+  width: 300px;
+  height: 90px;
   border-radius: 10px;
-  background: #8c8cbd;
 }
 
 ul {
@@ -16,7 +18,7 @@ ul {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid rgb(22, 61, 187);
+  border: 2px solid rgba(115, 175, 175, 0.685);
   border-radius: 10px;
 }
 
@@ -25,7 +27,7 @@ li {
 }
 
 nav {
-  background-image: linear-gradient(45deg, #38a5ff 0%, #77a0ce 51%, #2b98ff 100%);
+  background-image: linear-gradient(45deg, #7fc4fd 0%, #b3e7e9 51%, #2bf1ff 100%);
   border-radius: 10px;
 }
 
@@ -43,14 +45,11 @@ nav ul li a {
 }
 
 .active {
-  background-color: #3e8dc2;
-  border: 1px solid rgb(22, 61, 187);
+  background-color: #a8e7e9;
+  border: 2px groove rgba(144, 219, 219, 0.295);
   border-radius: 10px;
 }
 
-/* .listitem:hower {
-  background-position: right center;
-} */
 .box {
   height: 200px;
   width: 300px;
@@ -97,14 +96,14 @@ button {
   cursor: pointer;
   font-weight: bold;
   color: #000333;
-  height: 50px;
+  height: 40px;
   width: 100px;
   border-radius: 15px;
-  background-color: #b8b8be;
+  background-color:#beffef;
 }
 
 button:active {
-  background-color: #2c4194;
+  background-color: #44eed7;
 }
 
 button:hover, select:hover {
@@ -113,7 +112,7 @@ button:hover, select:hover {
 }
 
 .calcbutton {
-  background-color: #6b6ba3;
+  background-color:#60a2af;
   font-size: 30px;
   font-weight: bold;
   width: 120px;
@@ -125,7 +124,7 @@ button:hover, select:hover {
 }
 
 .calcdisplay {
-  background-color: #d1d3db;
+  background-color: #ffffff;
   text-align: right;
   font-size: 50px;
   font-weight: bolder;
@@ -136,18 +135,23 @@ button:hover, select:hover {
 
 .border-black {
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.border-groove-light{
+  border: 2px groove rgba(168, 168, 247, 0.5);
+  border-radius: 10px;
 }
 
 .calculator {
-  background-color: #7384c5;
+  background-color:#b4d7c6;
   margin: 8px auto;
   padding: 10px;
   width: 360px;
 }
 
 .outer {
-  background-color: #aaafc2;
+  background-color: #d7f4fa;
   margin: 50px auto;
   padding: 10px;
   width: 360px;
@@ -156,7 +160,7 @@ button:hover, select:hover {
 }
 
 .outer2 {
-  background-color: #aaafc2;
+  background-color: #d9dce7;
   margin: 15px auto;
   padding: 10px;
   width: 96vw;
@@ -169,7 +173,7 @@ button:hover, select:hover {
 }
 
 .to-do{
-  background-color: #38a5ff;
+  /* background-color: #6afcf4; */
   text-align: left;
   padding: 5px;
   overflow-wrap: break-word;
@@ -187,18 +191,16 @@ button:hover, select:hover {
   padding: 5px;
   font-size: 15px;
   font-weight: 550;
-  /* font-weight: bold; */
   color: #000333;
-  background-color: #b8b8be;
+  background-color:#beffef;
   width: 100px;
-  height: 50px;
+  height: 40px;
 }
 .footer{
-  background-color:  #8c8cbd;
+  background-color:  #93bebf;
   text-align: center;
-  /* padding: 2px; */
-  border: 1px solid rgb(22, 61, 187);
-  border-radius: 10px;
+  border: 1px solid rgb(22, 176, 187);
+  border-radius: 5px;
 }
 
 textarea{

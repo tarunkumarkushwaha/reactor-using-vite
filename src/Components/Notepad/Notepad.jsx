@@ -84,10 +84,10 @@ function Notepad() {
           Capitalize
         </button>
         <button className="text-center" onClick={upclick}>
-          All Upper case
+          All Upper
         </button>
         <button className="text-center" onClick={downclick}>
-          All Lower case
+          All Lower
         </button>
         <button className="text-center" onClick={eraseall}>
           Erase all
@@ -129,7 +129,7 @@ function Notepad() {
           className="outer2 border-black"
         ></textarea>
       </div>
-      <div className='border-black to-do'>no of words - {notes.split(" ").filter((a) => a != 0).length} and no of characters - {notes.length}</div>
+      <div className='border-groove-light to-do'>no of words - {notes.split(" ").filter((a) => a != 0).length} and no of characters - {notes.length}</div>
     </>
 
   )

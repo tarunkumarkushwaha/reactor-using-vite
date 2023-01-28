@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "./navbar";
+// import Navbar from "./navbar";
 export default function NumberSorter() {
   const [val, setVal] = useState("1,2,3,4,5,6,7");
   const [cr, setCr] = useState(5);
@@ -50,7 +50,7 @@ export default function NumberSorter() {
   };
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="flex-row-center">
         <div className="text-center border-black box">
           <p>Array of numbers</p>
@@ -79,7 +79,7 @@ export default function NumberSorter() {
             onChange={change2}
           ></input>
         </div>
-        <div className="text-center border-black displaybrd box">
+        <div className="text-center border-black box">
           {output}
         </div>
       </div>

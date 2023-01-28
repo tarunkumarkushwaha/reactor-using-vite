@@ -3,32 +3,52 @@ import Navbar from "./navbar";
 const Todo = () => {
   const [item, setItem] = useState("");
   const [todo, setTodo] = useState([]);
-  // const [key, setKey] = useState(0);
-  
+  const [goals, setGoals] = useState([]);
+  const [key, setKey] = useState(false);
+
   const displaychange = (e) => {
     setItem(e.target.value);
   };
   const clickevent = () => {
     // very important settodo returns the initial state in the userstate
+    // it works as Array.push method 
     setTodo((olditems) => {
       return [...olditems, item]
     })
-    localStorage.setItem("items",todo)
     //  it clears the input field 
     setItem('')
-    
+    // save to localStorage
+    localStorage.setItem("items",todo) 
+
+    // it works as Array.push method 
+    setGoals((olditems) => {
+      return [...olditems, key]})
   };
 
   const current =()=>{
-    console.log(key);
+    alert(goals)
   }
   const Delete = (a) => {
     setTodo([])
+    localStorage.removeItem("items")
   }
   const deletetodo = (a) => {
-    console.log("delete",a, todo.indexOf(a));
     setTodo(todo.filter((e)=>{return e!==a}))
+    localStorage.setItem("items",todo)
   }
+  const checkbx = () => {
+   key?setKey(false):setKey(true)
+  
+  // setGoals((olditems)=>{return[...olditems,hoho.value]})
+  // localStorage.setItem("targets",goals)   
+  }
+//   checkbx().then(()=>{
+//   let id = todo.indexOf(a)+"todoitem"
+//   let hoho = document.getElementById(id)
+//   setGoals(hoho.value)
+// //  setGoals(key)
+// })
+
   return (
     <>
       <Navbar />
@@ -54,8 +74,9 @@ const Todo = () => {
         <div className="outer text-center border-black">
           {todo.map((a) => {
             return <div key ={todo.indexOf(a)+1} className="tododiv border-black">
-              <p className="to-do"><input type="checkbox" id="check" />
-              {todo.indexOf(a)+1}.{a}
+              <p className="to-do"><input type="checkbox" id={todo.indexOf(a)+"todoitem"} value={key} onClick={()=>{checkbx()}} /> {" "}
+              {todo.indexOf(a)+1}. {a}
+              
             </p>
             <b className="deletetodo" onClick={() => {deletetodo(a)}}>X</b>
             </div>
