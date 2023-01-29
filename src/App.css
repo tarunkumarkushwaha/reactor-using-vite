@@ -152,10 +152,10 @@ button:hover, select:hover {
 
 .outer {
   background-color: #d7f4fa;
-  margin: 50px auto;
+  margin: 17px;
   padding: 10px;
   width: 360px;
-  height: 57vh;
+  height: 65vh;
   font-size: larger;
 }
 
@@ -212,11 +212,12 @@ textarea{
   text-align: end;
   cursor: pointer;
   border-radius: 10px;
-  background-color: #38a5ff;
-  border: 1px solid #000333;
+  color: red;
+  background-color: #f7888894;
+  border: 1px solid #000108;
 }
 
 .tododiv{
-  background-color: #38a5ff; 
+  background-color: #83c4f8; 
   border-radius: 10px;
 }
