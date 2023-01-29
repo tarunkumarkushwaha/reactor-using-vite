@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Navbar from "./navbar";
 
 const Todo = () => {
+  let num = localStorage.getItem("items") ? localStorage.getItem("items").split(",") : []
+
   // states 
   const [item, setItem] = useState("");
-  const [todo, setTodo] = useState(localStorage.getItem("items") ? [localStorage.getItem("items")] : []);
+  const [todo, setTodo] = useState(num);
 
   // display change event 
   const displaychange = (e) => {
@@ -12,19 +14,15 @@ const Todo = () => {
   };
   // button event 
   const addtodo = () => {
-
     // settodo returns the initial state in the userstate
     // it works as Array.push method 
     setTodo((olditems) => {
       return [...olditems, item]
     })
-
-    //  it clears the input field 
     setItem('')
-
     // save to localStorage
     localStorage.setItem("items", todo)
-  };
+  }
   const Delete = (a) => {
     setTodo([])
     localStorage.removeItem("items")
@@ -35,8 +33,10 @@ const Todo = () => {
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
-      addtodo();
+      //   addtodo();
+      alert(localStorage.getItem("items"))
     }
+
   }
 
   return (
