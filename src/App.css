@@ -3,14 +3,16 @@
   padding: 0;
 }
 
-.appnamediv{
-background-color:#bdd6eb;
+.appnamediv {
+  background-color: #bdd6eb;
+  border: 1px groove #bdd6eb9a;
+  border-radius: 10px;
 }
 
 .appname {
   width: 300px;
   height: 90px;
-  border-radius: 10px;
+
 }
 
 ul {
@@ -18,8 +20,8 @@ ul {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 2px solid rgba(115, 175, 175, 0.685);
   border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
 }
 
 li {
@@ -57,10 +59,14 @@ nav ul li a {
   margin: 50px;
 }
 
-.input1 {
-  height: 150px;
-  width: 250px;
+.input-todo {
+  margin: 25px;
+  padding: 6px;
+  height: 40px;
+  width: 80vw;
+  background-color: #bde0fd;
   font-size: larger;
+  line-height: 50px;
 }
 
 .flex-row-center {
@@ -77,7 +83,7 @@ nav ul li a {
   align-items: center;
 }
 
-.input2 {
+.input-modal {
   margin: 40px;
   height: 50px;
   width: 200px;
@@ -98,126 +104,149 @@ button {
   color: #000333;
   height: 40px;
   width: 100px;
+  margin: 5px;
   border-radius: 15px;
-  background-color:#beffef;
+  background-color: #5efdd5;
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
 }
 
 button:active {
-  background-color: #44eed7;
+  background-color: #2b998a;
 }
 
-button:hover, select:hover {
-  border: 2px solid #000333;
+button:hover,
+select:hover {
+  border: 2px solid #005f57;
   transform: scale(1.05);
 }
 
-.calcbutton {
-  background-color:#60a2af;
-  font-size: 30px;
-  font-weight: bold;
-  width: 120px;
-  height: 60px;
+.todo-button {
+  height: 52px;
+  width: 60px;
+  background-color: #44eed7;
+  margin: 10px;
 }
 
 .text-center {
   text-align: center;
 }
 
-.calcdisplay {
-  background-color: #ffffff;
-  text-align: right;
-  font-size: 50px;
-  font-weight: bolder;
-  margin: 5px 5px 15px 2px;
-  width: 353px;
-  height: 83px;
-}
-
-.border-black {
+.border-transparent {
+  border: 2px solid transparent;
   border-radius: 10px;
-  border: 2px solid rgb(0, 0, 0);
 }
 
-.border-groove-light{
+.border-groove-light {
   border: 2px groove rgba(168, 168, 247, 0.5);
   border-radius: 10px;
 }
 
+.shadow {
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
+}
+
 .calculator {
-  background-color:#b4d7c6;
+  background-color: #b4d7c6;
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   margin: 8px auto;
   padding: 10px;
-  width: 360px;
+  width: 390px;
 }
 
-.outer {
+.calcdisplay {
+  background-color: #ffffff;
+  text-align: right;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 5px 5px 15px 2px;
+  width: 380px;
+  height: 83px;
+}
+
+.calcbutton {
+  background-color: #60a2af;
+  font-size: 30px;
+  font-weight: bold;
+  width: 120px;
+  height: 47px;
+}
+
+.todo-display {
   background-color: #d7f4fa;
+  border-radius: 10px;
   margin: 17px;
   padding: 10px;
-  width: 360px;
-  height: 65vh;
+  width: 80vw;
+  height: 50vh;
   font-size: larger;
 }
 
-.outer2 {
+.notepad-display {
   background-color: #d9dce7;
   margin: 15px auto;
-  padding: 10px;
+  padding: 12px;
   width: 96vw;
-  height: 53vh;
+  height: 50vh;
   font-size: larger;
 }
 
-#btn-list{
- margin-top: 15px;
+#btn-list {
+  margin-top: 15px;
 }
 
-.to-do{
-  /* background-color: #6afcf4; */
+.to-do {
   text-align: left;
   padding: 5px;
   overflow-wrap: break-word;
 }
 
-.modal{
+.modal {
   position: absolute;
   top: 32vh;
   left: 25vw;
-  background-color: #2b99ffe7;
+  background-color: #a2eef8;
   padding: 10px 50px 0px 0px;
+  box-shadow: 0px 20px 40px rgb(8 8 8);
 }
-.cards{
+
+.select {
   margin: 1px;
   padding: 5px;
   font-size: 15px;
   font-weight: 550;
   color: #000333;
-  background-color:#beffef;
+  background-color: #5efdd5;
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   width: 100px;
   height: 40px;
 }
-.footer{
-  background-color:  #93bebf;
+
+.footer {
+  background-color: #93bebf;
   text-align: center;
   border: 1px solid rgb(22, 176, 187);
   border-radius: 5px;
 }
 
-textarea{
+textarea {
   resize: none;
 }
 
-.deletetodo{
-  cursor: pointer;
-  text-align: end;
+.deletetodo {
   cursor: pointer;
   border-radius: 10px;
   color: red;
-  background-color: #f7888894;
+  background-color: #f7efeffd;
   border: 1px solid #000108;
+  position: relative;
+  bottom: 30px;
+  left: 38vw;
 }
 
-.tododiv{
-  background-color: #83c4f8; 
+.tododiv {
+  background-color: #83c4f8;
+  border: 2px solid #39a6ff;
+  ;
   border-radius: 10px;
+  margin: 5px;
 }

@@ -80,40 +80,40 @@ function Notepad() {
     <>
       <Navbar />
       <div className="flex-row-center" id='btn-list' >
-        <button className="text-center" onClick={capital1st}>
+        <button className="text-center border-transparent" onClick={capital1st}>
           Capitalize
         </button>
-        <button className="text-center" onClick={upclick}>
+        <button className="text-center border-transparent" onClick={upclick}>
           All Upper
         </button>
-        <button className="text-center" onClick={downclick}>
+        <button className="text-center border-transparent" onClick={downclick}>
           All Lower
         </button>
-        <button className="text-center" onClick={eraseall}>
+        <button className="text-center border-transparent" onClick={eraseall}>
           Erase all
         </button>
-        <button className="text-center" onClick={copy}>
+        <button className="text-center border-transparent" onClick={copy}>
           Copy
         </button>
-        <button className="text-center" onClick={paste}>
+        <button className="text-center border-transparent" onClick={paste}>
           Paste
         </button>
-        <button className="text-center" onClick={replace}>
+        <button className="text-center border-transparent" onClick={replace}>
           Replace
         </button>
-        <select id="cards" onChange={fontstylecng} className='cards border-black'>
+        <select id="cards" onChange={fontstylecng} className='select border-transparent'>
           <option value="normal">normal</option>
           <option value="italic">Italic</option>
         </select>
-        <select id="cards2" onChange={fontsizecng} className='cards border-black'>
-          <option className='border-black' value="larger">Size</option>
-          <option className='border-black' value="larger">normal</option>
-          <option className='border-black' value="medium">very small</option>
-          <option className='border-black' value="large">small</option>
-          <option className='border-black' value="x-large">large</option>
-          <option className='border-black' value="xx-large">larger</option>
+        <select id="cards2" onChange={fontsizecng} className='select border-transparent'>
+          <option value="larger">Size</option>
+          <option value="larger">normal</option>
+          <option value="medium">very small</option>
+          <option value="large">small</option>
+          <option value="x-large">large</option>
+          <option value="xx-large">larger</option>
         </select>
-        <button className="text-center" onClick={requestTarunToDownload}>
+        <button className="text-center border-transparent" onClick={requestTarunToDownload}>
           Download
         </button>
       </div>
@@ -126,7 +126,7 @@ function Notepad() {
           onChange={displaychange}
           style={{ fontStyle: font, fontSize: size }}
           placeholder="write something..."
-          className="outer2 border-black"
+          className="notepad-display border-transparent shadow"
         ></textarea>
       </div>
       <div className='border-groove-light to-do'>no of words - {notes.split(" ").filter((a) => a != 0).length} and no of characters - {notes.length}</div>

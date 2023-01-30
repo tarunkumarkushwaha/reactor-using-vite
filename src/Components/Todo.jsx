@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 
 const Todo = () => {
-  let num = localStorage.getItem("items") ? localStorage.getItem("items").split(",") : []
+  // let num = localStorage.getItem("items") ? localStorage.getItem("items").split(",") : []
 
   // states 
   const [item, setItem] = useState("");
-  const [todo, setTodo] = useState(num);
+  const [todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
   // display change event 
   const displaychange = (e) => {
@@ -21,47 +21,49 @@ const Todo = () => {
     })
     setItem('')
     // save to localStorage
-    localStorage.setItem("items", todo)
+    localStorage.setItem("items", JSON.stringify(todo))
   }
   const Delete = (a) => {
     setTodo([])
-    localStorage.removeItem("items")
+    localStorage.clear()
   }
   const deletetodo = (a) => {
     setTodo(todo.filter((e) => { return e !== a }))
+    localStorage.setItem('items', JSON.stringify(todo));
   }
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
-      //   addtodo();
-      alert(localStorage.getItem("items"))
+      addtodo();
     }
-
   }
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(todo));
+  }, [todo]);
 
   return (
     <>
       <Navbar />
-      <div className="flex-row-center">
-        <textarea
-          rows="4" cols="30"
-          value={item}
-          onChange={displaychange}
-          onKeyDown={onEnterPress}
-          placeholder="enter your task"
-          className="outer text-center border-black input1"
-        ></textarea>
-        <div className="flex-column-center">
-          <button className="text-center" onClick={addtodo}>
-            Click to add a To-do
+      <div className="flex-column-center">
+        <div className="flex-row-center">
+          <input
+            type="text"
+            value={item}
+            onChange={displaychange}
+            onKeyDown={onEnterPress}
+            placeholder="enter your task"
+            className="border-transparent shadow input-todo"
+          ></input>
+          <button className="text-center border-transparent shadow todo-button" onClick={addtodo}>
+            Add
           </button>
-          <button className="text-center" onClick={Delete}>
+          <button className="text-center border-transparent shadow todo-button" onClick={Delete}>
             Reset
           </button>
         </div>
-        <div className="outer text-center border-black">
+        <div className="todo-display shadow text-center">
           {todo.map((a) => {
-            return <div key={todo.indexOf(a) + 1} className="tododiv border-black">
+            return <div key={todo.indexOf(a) + 1} className="tododiv">
               <p className="to-do" id={todo.indexOf(a) + "todoitem"}> {" "}
                 {todo.indexOf(a) + 1}. {a}
               </p>
