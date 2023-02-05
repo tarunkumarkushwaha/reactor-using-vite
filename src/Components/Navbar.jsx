@@ -5,7 +5,7 @@ const Navbar = () => {
     <>
       <header>
         <div className="flex-row-center appnamediv">
-          <img className='appname' src="src\assets\image.png" alt="Utility Box" />
+          <img className='appname' src={require("src/assets/image.png")} alt="Utility Box" />
         </div>
         <nav>
           <ul>

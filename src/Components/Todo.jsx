@@ -37,6 +37,7 @@ const Todo = () => {
       addtodo();
     }
   }
+  // when usestate todo changes function in use effect is called 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(todo));
   }, [todo]);
