@@ -10,6 +10,7 @@ function Notepad() {
   const [newword, setNewword] = useState("")
   const [font, setFont] = useState("normal")
   const [size, setSize] = useState("larger")
+  const [mobilenav, setmobilenav] = useState("btn-list")
 
   // displaychange handler 
   const displaychange = (e) => {
@@ -76,10 +77,20 @@ function Notepad() {
     link.click();
     URL.revokeObjectURL(link.href);
   }
+
+  // navbar button dropdown
+const myFunction =()=> {
+  mobilenav=="mobile-content"?setmobilenav("btn-list"):setmobilenav("mobile-content")
+}
+
   return (
     <>
       <Navbar />
-      <div className="flex-row-center" id='btn-list' >
+      <div className="dropdown">
+        <button onClick={myFunction} className="dropbtn text-center">Menu</button>
+      </div>
+      
+      <div className={mobilenav} >
         <button className="text-center border-transparent" onClick={capital1st}>
           Capitalize
         </button>

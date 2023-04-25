@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Logo from '../assets/images/image.png'
 const Navbar = () => {
   return (
     <>
       <header>
         <div className="flex-row-center appnamediv">
-          <img className='appname' src='src\assets\images\image.png' alt="Utility Box" />
+          <img className='appname' src={Logo} alt="Utility Box" />
         </div>
         <nav>
           <ul>
