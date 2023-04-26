@@ -10,7 +10,7 @@ const Replacemodal = ({ prevword, newword, setPrevword, setNewword, closemodal }
   return (
     <>
       {/* no fade effect  */}
-      <div className='modal border-transparent flex-row-center'>
+      <div className='modal border-transparent'>
         <input
           type="text"
           className="text-center border-transparent input-modal"

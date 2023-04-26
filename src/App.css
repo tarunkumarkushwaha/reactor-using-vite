@@ -197,6 +197,10 @@ select:hover {
 }
 
 .modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 32vh;
   left: 25vw;
@@ -270,6 +274,18 @@ textarea {
 }
 
 @media only screen and (max-width: 600px) {
+
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 25vh;
+    left: 10%;
+    padding: 5px;
+  }
+
   nav ul li a {
     padding: 14px 15px;
     width: 80px;
@@ -303,4 +319,28 @@ textarea {
   .notepad-display {
     width: 85vw;
   }
+
+  .calcbutton {
+    width: 100px;
+  }
+
+  .calculator {
+    width: 330px;
+  }
+
+  .calcdisplay {
+    width: 320px;
+  }
+
+  .input-todo {
+    width: 50vw;
+    margin: 15px;
+  }
+
+  .todo-button {
+    width: 50px;
+    margin: 5px;
+  }
+
+
 }
