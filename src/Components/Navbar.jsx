@@ -19,9 +19,9 @@ const Navbar = () => {
             <li>
               <NavLink to={"/todo"}>Todo</NavLink>
             </li>
-            {/* <li>
-              <NavLink to={"/numbersorter"}>NumberSorter</NavLink>
-            </li> */}
+            <li>
+              <NavLink to={"/AlarmClock"}>AlarmClock</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

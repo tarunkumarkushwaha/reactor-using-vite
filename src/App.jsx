@@ -8,7 +8,7 @@ import Calculator from "./Components/Calculator";
 import Footer from "./Components/Footer";
 import Todo from "./Components/Todo";
 import Notepad from "./Components/Notepad/Notepad";
-// import NumberSorter from "./Components/NumberSorter";
+import AlarmClock from "./Components/AlarmClock";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Notepad/>}/>
         <Route path="/calculator" element={<Calculator/>}/>
         <Route path="/todo" element={<Todo/>}/>
-        {/* <Route path="/numbersorter" element={<NumberSorter/>}/> */}
+        <Route path="/alarmclock" element={<AlarmClock/>}/>
       </Routes>
     </BrowserRouter>
       <Footer/>
