@@ -294,12 +294,17 @@ textarea {
 }
 
 .modal-bg1 {
-  background-color: #37393a;
+  background-color: #2b769c;
+  justify-content: space-between;
   color: aliceblue;
 }
 
 .modal-bg2 {
   background-color: #9a9d9e;
+}
+
+.modal-bg3 {
+  padding-top: 20px;
 }
 
 #day {
@@ -317,12 +322,12 @@ textarea {
 }
 
 .clocksettingmenu{
-  height: 80vh;
+  height: 75vh;
 }
 
 .closeButton{
-  color: #000108;
-  background-color: #095252;
+  color: #071579;
+  background-color: #c2dfdf;
   height: 30px;
   width: 30px;
 }
