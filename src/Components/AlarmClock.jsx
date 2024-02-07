@@ -113,27 +113,27 @@ const AlarmClock = () => {
                         <div className="flex-column-center modal-bg3">
                             {/* modal-body  */}
 
-                            <select className='select cursor' id='alarmhrs'onChange={(e) => setalarmHr(e.target.value)}>
+                            <select className='selectalarm cursor' id='alarmhrs'onChange={(e) => setalarmHr(e.target.value)}>
                                 {hrsOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
                             </select>
 
-                            <select className='select cursor' id='alarmmins' onChange={(e) => setalarmMin(e.target.value)}>
+                            <select className='selectalarm cursor' id='alarmmins' onChange={(e) => setalarmMin(e.target.value)}>
                                 {minOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
                             </select>
 
-                            <select className='select cursor' id='alarmsecs'onChange={(e) => setalarmSec(e.target.value)}>
+                            <select className='selectalarm cursor' id='alarmsecs'onChange={(e) => setalarmSec(e.target.value)}>
                                 {minOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
                             </select>
 
-                            <select className='select cursor' id="ampm" onChange={(e)=>setalarmAMPM(e.target.value)}>
+                            <select className='selectalarm cursor' id="ampm" onChange={(e)=>setalarmAMPM(e.target.value)}>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
-                            <button className="button" type="button" id='setButton' onClick={alarmSet}>Set Alarm</button>
+                            <button className="buttonalarm" type="button" id='setButton' onClick={alarmSet}>Set Alarm</button>
 
-                            <button className="button" type="button" id='clearButton' onClick={alarmClear}><b>STOP
+                            <button className="buttonalarm" type="button" id='clearButton' onClick={alarmClear}><b>STOP
                                 ALARM</b></button>
-                            <button className="button" type="button" onClick={()=>alert("wallpaper change feature in progress")}>Change
+                            <button className="buttonalarm" type="button" onClick={()=>alert("wallpaper change feature in progress")}>Change
                                 wallpaper</button>
                         </div>
                     </div>
