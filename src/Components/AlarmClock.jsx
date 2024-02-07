@@ -1,39 +1,47 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Navbar from "./navbar";
 
 const AlarmClock = () => {
+    const [clockSetting, setclockSetting] = useState(false)
+    const [alarmBtnText, setalarmBtnText] = useState(false)
+    const [time, settime] = useState("00:01")
+    const [alarmMin, setalarmMin] = useState(0)
+    const [alarmSec, setalarmSec] = useState(0)
+    const [alarmHr, setalarmHr] = useState(0)
+    const [ampm, setampm] = useState("AM")
+    const [date, setdate] = useState("01-01-2020")
+    let minOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+    let hrsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    // let clock = document.getElementById('ghari');
-    // let AMPM = document.getElementById('AMPM');
-    // let day = document.getElementById('day');
-    // const myclock = () => {
-    //     let t = new Date();
-    //     let d = t.getDate()
-    //     let mn = t.getMonth()
-    //     let y = t.getFullYear()
-    //     let h = (12 - (t.getHours()));
-    //     let m = t.getMinutes();
-    //     let s = t.getSeconds();
-    //     let ampm = (t.getHours()) < 12 ? 'AM' : 'PM';
-    //     if (h < 0) {
-    //         h = h * -1;
-    //     } else if (h == 0) {
-    //         h = 12;
-    //     } else {
-    //         h = h;
-    //     }
-    //     clock.innerHTML = addZero(h) + ":" + addZero(m) + ":" + addZero(s) + " "
-    //     AMPM.innerHTML = ampm
-    //     day.innerHTML = d + " / " + (mn + 1) + " / " + y
-    // }
-    // const addZero = (time) => {
-    //     return (time < 10) ? "0" + time : time;
-    // }
-    // setInterval(myclock, 1000)
+    const myclock = () => {
+        let t = new Date();
+        let d = t.getDate()
+        let mn = t.getMonth()
+        let y = t.getFullYear()
+        let h = (12 - (t.getHours()));
+        let m = t.getMinutes();
+        let s = t.getSeconds();
+        let ampmy = (t.getHours()) < 12 ? 'AM' : 'PM';
+        if (h < 0) {
+            h = h * -1;
+        } else if (h == 0) {
+            h = 12;
+        } else {
+            h = h;
+        }
+        settime(`${(h < 10) ? "0" + h : h} :${(m < 10) ? "0" + m : m} :${(s < 10) ? "0" + s : s} `)
+        setampm(ampmy)
+        setdate(`${d} - ${(mn + 1)} - ${y}`)
+    }
+    setInterval(myclock, 1000)
 
     // // alarm feature
     // // it only works for current day
-    // let sound = new Audio("https://cdn.pixabay.com/download/audio/2022/11/25/audio_fb45cd67b0.mp3?filename=kirby-alarm-clock-127079.mp3");
+
+
+    let src = "https://cdn.pixabay.com/download/audio/2022/11/25/audio_fb45cd67b0.mp3?filename=kirby-alarm-clock-127079.mp3";
+    const currentsong = useRef()
+    let intervalId = useRef(null)
     // sound.loop = true;
     // const hoursMenu = () => {
     //     let select = document.getElementById('alarmhrs');
@@ -60,95 +68,101 @@ const AlarmClock = () => {
     //     }
     // }
     // secMenu();
-    // const alarmSet = () => {
-    //     let hr = document.getElementById('alarmhrs');
-    //     let min = document.getElementById('alarmmins');
-    //     let sec = document.getElementById('alarmsecs');
-    //     let ap = document.getElementById('ampm');
-    //     let selectedHour = hr.options[hr.selectedIndex].value;
-    //     let selectedMin = min.options[min.selectedIndex].value;
-    //     let selectedSec = sec.options[sec.selectedIndex].value;
-    //     let selectedAP = ap.options[ap.selectedIndex].value;
-    //     let alarmTime = addZero(selectedHour) + ":" + addZero(selectedMin) + ":" + addZero(selectedSec) + selectedAP;
-    //     console.log('alarmTime:' + alarmTime);
-    //     document.getElementById('alarmhrs').disabled = true;
-    //     document.getElementById('alarmmins').disabled = true;
-    //     document.getElementById('alarmsecs').disabled = true;
-    //     document.getElementById('ampm').disabled = true;
+    const alarmSet = () => {
+        intervalId.current = setInterval(
+            () => {
+                setalarmBtnText(true);
+                let currenttime
+                let alarmtime
+                let t = new Date();
+                // let d = t.getDate()
+                // let mn = t.getMonth()
+                // let y = t.getFullYear()
+                let h = 0 - alarmHr;
+                let m = alarmMin;
+                let s = alarmSec;
+                let h1 = (12 - (t.getHours()));
+                let m1 = t.getMinutes();
+                let s1 = t.getSeconds();
+                // let ampmy = (t.getHours()) < 12 ? 'AM' : 'PM';
+                // if (h < 0) {
+                //     h = h * -1;
+                // } else if (h == 0) {
+                //     h = 12;
+                // } else {
+                //     h = h;
+                // }
+                currenttime = `${(h < 10) ? "0" + h : h} :${(m < 10) ? "0" + m : m} :${(s < 10) ? "0" + s : s} `
+                alarmtime = `${(h1 < 10) ? "0" + h1 : h1} :${(m1 < 10) ? "0" + m1 : m1} :${(s1 < 10) ? "0" + s1 : s1} `
+                // setampm(ampmy)
+                // setdate(`${d} - ${(mn + 1)} - ${y}`)
+                console.log(`alarmis set for ${currenttime} , ${alarmtime} and alarm min ${alarmMin}`)
+                if (currenttime == alarmtime) {
+                    currentsong.current.play();
+                }
+            }
+            , 1000)
+    }
 
-    //     setInterval(() => {
-    //         let t = new Date();
-    //         let h = (12 - (t.getHours()));
-    //         let m = t.getMinutes();
-    //         let s = t.getSeconds();
-    //         let ampm = (t.getHours()) < 12 ? 'AM' : 'PM';
-    //         if (h < 0) {
-    //             h = h * -1;
-    //         } else if (h == 0) {
-    //             h = 12;
-    //         } else {
-    //             h = h;
-    //         }
-    //         let currentTime = addZero(h) + ":" + addZero(m) + ":" + addZero(s) + "" + ampm;
-    //         if (alarmTime == currentTime) {
-    //             sound.play();
-    //         }
-    //     }, 1000);
-    // }
-
-    // const alarmClear = () => {
-    //     document.getElementById('alarmhrs').disabled = false;
-    //     document.getElementById('alarmmins').disabled = false;
-    //     document.getElementById('alarmsecs').disabled = false;
-    //     document.getElementById('ampm').disabled = false;
-    //     sound.pause();
-    // }
+    const alarmClear = () => {
+        setalarmBtnText(false)
+        clearInterval(intervalId.current)
+        currentsong.current.pause();
+    }
 
     return (
         <>
             <Navbar />
             <div className="clock-body flex-column-center">
                 {/* Button trigger modal  */}
-                <div className="flex-column-center dial1 cursor" title="click to open menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div className="flex-column-center dial1 cursor" title="click to open menu" onClick={() => setclockSetting(true)}>
                     <div className="flex-row-center">
-                        <div id="ghari">10:00</div>
-                        <div id="AMPM">AM</div>
+                        <div id="ghari">{time}</div>
+                        <div id="AMPM">{ampm}</div>
                     </div>
-                    <div id="day">15-02-1992</div>
+                    <div id="day">{date}</div>
                 </div>
+                <audio src={src} loop={true} ref={currentsong} crossOrigin={'anonymous'}></audio>
             </div>
             {/* Modal  */}
-            <div>
-                <div>
+
+            {clockSetting &&
+                <div className='clocksettingmenu modal-bg2'>
                     <div>
-                        <div className="modal-bg1">
+                        <div className="modal-bg1 flex-row-center">
                             <h1>Menu</h1>
-                            <button type="button" className='closeButton'>X</button>
+                            <button type="button" onClick={() => setclockSetting(false)} className='closeButton'>X</button>
                         </div>
-                        <div className="modal-body flex-column-center modal-bg2">
+                        <div className="flex-column-center modal-bg2">
                             {/* modal-body  */}
 
-                            <select className='select cursor' id='alarmhrs'></select>
+                            <select className='select cursor' id='alarmhrs'onChange={(e) => setalarmHr(e.target.value)}>
+                                {hrsOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
+                            </select>
 
-                            <select className='select cursor' id='alarmmins'></select>
+                            <select className='select cursor' id='alarmmins' onChange={(e) => setalarmMin(e.target.value)}>
+                                {minOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
+                            </select>
 
-                            <select className='select cursor' id='alarmsecs'></select>
+                            <select className='select cursor' id='alarmsecs'onChange={(e) => setalarmSec(e.target.value)}>
+                                {minOptions.map((option) => { return <option value={option} key={option}>{option}</option> })}
+                            </select>
 
                             <select className='select cursor' id="ampm">
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
-                            <button className="button" type="button" id='setButton' onClick='alarmSet()'>Set Alarm</button>
+                            <button className="button" type="button" id='setButton' onClick={alarmSet}>Set Alarm</button>
 
-                            <button className="button" type="button" id='clearButton' onClick='alarmClear()'><b>STOP
+                            <button className="button" type="button" id='clearButton' onClick={alarmClear}><b>STOP
                                 ALARM</b></button>
-                            <button className="button" type="button" onclick="window.location.reload()">Change
+                            <button className="button" type="button" onClick={window.location.reload}>Change
                                 wallpaper</button>
                         </div>
                     </div>
+                    {/* modal ends  */}
                 </div>
-                {/* modal ends  */}
-            </div>
+            }
         </>
     )
 }
