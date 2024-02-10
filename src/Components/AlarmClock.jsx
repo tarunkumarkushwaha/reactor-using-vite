@@ -122,23 +122,30 @@ const AlarmClock = () => {
                         </div>
                         <div className="flex-column-center modal-bg3">
                             {/* modal-body  */}
-
+                            <div className="alarmtimebox">
+                            <div className="alarmbuttons">
+                                <p className='alarmbuttontext'>Hours</p>
                             <select className='selectalarm cursor' id='alarmhrs' defaultValue={alarmHr} onChange={(e) => setalarmHr(e.target.value)}>
                                 {hrsOptions.map((option) => { return <option value={option} key={option}>{option >=0 && option <=9 ? "0"+option : option}</option> })}
-                            </select>
-
+                            </select> 
+                            </div>
+                            <div className="alarmbuttons">
                             <select className='selectalarm cursor' id='alarmmins' defaultValue={alarmMin} onChange={(e) => setalarmMin(e.target.value)}>
                                 {minOptions.map((option) => { return <option value={option} key={option}>{option >=0 && option <=9 ? "0"+option : option}</option> })}
                             </select>
-
+                            </div>
+                            <div className="alarmbuttons">
                             <select className='selectalarm cursor' id='alarmsecs' defaultValue={alarmSec} onChange={(e) => setalarmSec(e.target.value)}>
                                 {minOptions.map((option) => { return <option value={option} key={option}>{option >=0 && option <=9 ? "0"+option : option}</option> })}
                             </select>
-
+                            </div>
+                            <div className="alarmbuttons">
                             <select className='selectalarm cursor' id="ampm" defaultValue={alarmAMPM} onChange={(e) => setalarmAMPM(e.target.value)}>
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
                             </select>
+                            </div>
+                            </div>
                             
                             <button className="buttonalarm" type="button" id='setButton' onClick={alarmON ? alarmClear : alarmSet}>{alarmON ? "STOP ALARM" : " Set Alarm"}</button>
 

@@ -340,6 +340,23 @@ textarea {
   margin: 0 10px 0 10px;
 }
 
+.alarmtimebox{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.alarmbuttons{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
 .buttonalarm,
 .selectalarm {
   text-align: center;
