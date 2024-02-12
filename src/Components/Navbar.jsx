@@ -22,6 +22,12 @@ const Navbar = () => {
             <li>
               <NavLink to={"/AlarmClock"}>AlarmClock</NavLink>
             </li>
+            <li>
+              <NavLink to={"/currencyconverter"}>Currency</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/weather"}>Weather</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
