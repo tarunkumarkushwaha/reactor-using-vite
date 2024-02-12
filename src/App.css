@@ -370,6 +370,28 @@ textarea {
   border-radius: 10px;
 }
 
+/* weather/ */
+
+.weathersearch{
+  text-align: center;
+  margin: 10px;
+  padding: 6px;
+  height: 40px;
+  width: 50vw;
+  background-color: #bde0fd;
+  font-size: larger;
+  line-height: 50px;
+}
+
+.WeatherContainer{
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid rgb(209, 209, 231);
+  border-radius: 5%;
+  background-color: #b4dbee;
+  color: #000108;
+}
+
 @media only screen and (max-width: 600px) {
 
   .modal {

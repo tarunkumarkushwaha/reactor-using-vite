@@ -93,7 +93,7 @@ const AlarmClock = () => {
     }
 
     const wallpaperChange = () => {
-        currentsong.current.play()
+        window.location.reload()
     }
 
     return (
@@ -147,11 +147,6 @@ const AlarmClock = () => {
                             <button className="buttonalarm" type="button" onClick={wallpaperChange}>Change
                                 wallpaper</button>
                         </div>
-                            
-                            <button className="buttonalarm" type="button" id='setButton' onClick={alarmON ? alarmClear : alarmSet}>{alarmON ? "STOP ALARM" : " Set Alarm"}</button>
-
-                            <button className="buttonalarm" type="button" onClick={wallpaperChange}>Change
-                                wallpaper</button>
                         </div>
                     </div>
                     {/* modal ends  */}

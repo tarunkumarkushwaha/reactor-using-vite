@@ -3,9 +3,9 @@ import Navbar from './navbar';
 
 const WeatherWidget = () => {
   const [input, setInput] = useState('');
+  const [ERRor, setERRor] = useState(false);
   const [weatherData, setweatherData] = useState();
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const [location, setLocation] = useState("26.9736955,84.8463571");
   const API_KEY = `${import.meta.env.VITE_API_KEY}`
 
   const displaychange = (e) => {
@@ -15,17 +15,21 @@ const WeatherWidget = () => {
   const loadWeatherData = async () => {
     try {
       await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${input}`)
-        .then((res) => {
-          return res.json();
+        .then(response => {
+          if (response.ok) {
+            setERRor(false);
+            return response.json();
+          } else {
+            setERRor(true);
+          }
         })
         .then((data) => {
-          // console.log(data);
-          setweatherData(data);
-        })
-    } catch (error) {
-      console.log(error)
+          // setweatherData(data);
+          console.log(data)
+        }).catch(error => console.log(error));
     }
-  };
+    catch (error) { console.log(error) }
+  }
 
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
@@ -34,27 +38,35 @@ const WeatherWidget = () => {
     }
   }
 
+  const fetchData = async () => {
+    await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`)
+    .then(res => res.json())
+    .then(data => {
+      setweatherData(data)
+      // console.log(data);
+    });
+  }
+  
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    })
-    }, [long, lat]);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLocation(position.coords.latitude.toString() +","+ position.coords.longitude.toString(),fetchData());
+    });
+  }, [location]);
 
   return (
     <>
       <Navbar />
       <div className="flex-column-center">
-      <h1>Weather Box</h1>
+        <h1>Weather Box</h1>
         <input
           type="text"
           value={input}
           onChange={displaychange}
           onKeyDown={onEnterPress}
-          placeholder="enter your task"
-          className="border-transparent shadow input-todo"
+          placeholder="enter location"
+          className="border-transparent shadow weathersearch"
         ></input>
-        <div className="weatherdatabox flex-column-center">
+        <div className="WeatherContainer border-transparent shadow flex-column-center">
           
           {weatherData ? weatherData.error ? <>
             <div className='failed'>failed to load</div>
@@ -62,13 +74,15 @@ const WeatherWidget = () => {
           :
            <>
             <img src={weatherData.current.condition.icon} alt="" />
-            <h1>{weatherData.location.name}</h1>
+            <h4>{weatherData && weatherData.current.condition.text}</h4>
+            <h1>{weatherData.location.name}, {weatherData.location.region}</h1>
             <h2>Temperature - {weatherData && weatherData.current.temp_c}^C</h2>
-            <h2>Feelslike - {weatherData && weatherData.current.feelslike_c}^C</h2>
-            <h2>Humidity - {weatherData && weatherData.current.humidity}%</h2>
-            <h2>Pressure - {weatherData && weatherData.current.pressure_mb}mb</h2>
-            <h2>Wind direction - {weatherData && weatherData.current.wind_dir}</h2>
-            <h2>Speed - {weatherData && weatherData.current.wind_kph}kmph</h2>
+            <h4>Feelslike - {weatherData && weatherData.current.feelslike_c}^C</h4>
+            <h4>Humidity - {weatherData && weatherData.current.humidity}%</h4>
+            <h4>Pressure - {weatherData && weatherData.current.pressure_mb}mb</h4>
+            <h4>Wind direction - {weatherData && weatherData.current.wind_dir}</h4>
+            <h4>Speed - {weatherData && weatherData.current.wind_kph}kmph</h4>
+            <h4>last updated - {weatherData && weatherData.current.last_updated}</h4>
           </> 
           : <h3>Enter location </h3>
         }
