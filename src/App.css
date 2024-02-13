@@ -76,6 +76,10 @@ nav ul li a {
   align-items: center;
 }
 
+.wrap{
+  flex-wrap: wrap;
+}
+
 .flex-column-center {
   display: flex;
   flex-direction: column;
@@ -390,6 +394,55 @@ textarea {
   border-radius: 5%;
   background-color: #b4dbee;
   color: #000108;
+}
+
+/* .dictionary */
+
+.dictionarycontainer {
+  background-color: #ebf1f093;
+  border: 1px solid #c7c7c7;
+  padding: 50px;
+  width: auto;
+  height: 60vh;
+}
+
+.dictionarybox {
+  background-color: #a2f5dc93;
+  border: 1px solid #1249ff52;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 50px;
+  width: 35vw;
+  height: 30vh;
+}
+
+.wordsearch{
+  text-align: center;
+  margin: 10px;
+  border: 3px solid #eaedee;
+  border-radius: 15px;
+  height: 40px;
+  width: 15vw;
+  background-color: #bdfcf6;
+  font-size: larger;
+  line-height: 50px;
+}
+
+.searchWordbtn {
+  background-color: #44eed7;
+  margin: 10px;
+  height: 40px;
+  border-radius: 15px;
+  padding: 15px 15px;
+  text-align: center;
+  color: white;
+  border: 2px solid #44eed7;
+}
+
+.searchWordbtn:hover {
+  transition: 1s ease;
+  background-image: linear-gradient(45deg, #2fffee 0%, #19f0d3 51%, #2fffe3 100%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 @media only screen and (max-width: 600px) {

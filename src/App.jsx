@@ -11,6 +11,7 @@ import Notepad from "./Components/Notepad/Notepad";
 import AlarmClock from "./Components/AlarmClock";
 import CurrencyConverter from "./Components/CurrencyConverter";
 import WeatherWidget from "./Components/WeatherWidget";
+import Dictionary from "./Components/Dictionary";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/alarmclock" element={<AlarmClock/>}/>
         <Route path="/currencyconverter" element={<CurrencyConverter/>}/>
         <Route path="/weather" element={<WeatherWidget/>}/>
+        <Route path="/dictionary" element={<Dictionary/>}/>
       </Routes>
     </BrowserRouter>
       <Footer/>

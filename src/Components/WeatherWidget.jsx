@@ -58,7 +58,7 @@ const WeatherWidget = () => {
     <>
       <Navbar />
       <div className="flex-column-center">
-        <h1>Weather Box</h1>
+        
         <input
           type="text"
           value={input}

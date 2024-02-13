@@ -28,6 +28,9 @@ const Navbar = () => {
             <li>
               <NavLink to={"/weather"}>Weather</NavLink>
             </li>
+            <li>
+              <NavLink to={"/dictionary"}>Dictionary</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
