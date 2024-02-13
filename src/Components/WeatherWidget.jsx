@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from './navbar';
 
 const WeatherWidget = () => {
   const [input, setInput] = useState('');
   const [ERRor, setERRor] = useState(false);
   const [weatherData, setweatherData] = useState();
-  const [location, setLocation] = useState("26.9736955,84.8463571");
   const API_KEY = `${import.meta.env.VITE_API_KEY}`
 
+  const locationdata = useRef("26.9736955,84.8463571")
   const displaychange = (e) => {
     setInput(e.target.value);
   };
@@ -24,8 +24,8 @@ const WeatherWidget = () => {
           }
         })
         .then((data) => {
-          // setweatherData(data);
-          console.log(data)
+          setweatherData(data);
+          // console.log(data)
         }).catch(error => console.log(error));
     }
     catch (error) { console.log(error) }
@@ -38,8 +38,8 @@ const WeatherWidget = () => {
     }
   }
 
-  const fetchData = async () => {
-    await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`)
+  const fetchData = async (longLat) => {
+    await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${longLat}`)
     .then(res => res.json())
     .then(data => {
       setweatherData(data)
@@ -49,9 +49,10 @@ const WeatherWidget = () => {
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function(position) {
-      setLocation(position.coords.latitude.toString() +","+ position.coords.longitude.toString(),fetchData());
+      locationdata.current = position.coords.latitude.toString() +","+ position.coords.longitude.toString()
+      fetchData(locationdata.current);
     });
-  }, [location]);
+  }, []);
 
   return (
     <>
