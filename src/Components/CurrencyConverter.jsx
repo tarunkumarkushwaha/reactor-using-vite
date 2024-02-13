@@ -4,11 +4,13 @@ import Navbar from './navbar'
 const CurrencyConverter = () => {
   return (
     <>
-    <Navbar/>
-    <div className="currencyBox flex-column-center">
-    <h1>CurrencyConverter</h1>
-    <h3>comming sooon</h3>
-    </div>
+      <Navbar />
+      <div className="flex-row-center">
+        <div className="currencyBox flex-column-center">
+          <h1>CurrencyConverter</h1>
+          <h3>comming sooon</h3>
+        </div>
+      </div>
     </>
   )
 }
