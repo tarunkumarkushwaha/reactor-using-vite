@@ -58,7 +58,7 @@ const WeatherWidget = () => {
     <>
       <Navbar />
       <div className="flex-column-center">
-        <h1>Weather Box</h1>
+        
         <input
           type="text"
           value={input}
@@ -85,7 +85,7 @@ const WeatherWidget = () => {
             <h4>Speed - {weatherData && weatherData.current.wind_kph}kmph</h4>
             <h4>last updated - {weatherData && weatherData.current.last_updated}</h4>
           </> 
-          : <h3>Enter location </h3>
+          : <div className='weathererror'><h3>Enter correct location </h3></div>
         }
         </div>
       </div>
