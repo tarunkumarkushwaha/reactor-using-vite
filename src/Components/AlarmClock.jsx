@@ -93,7 +93,7 @@ const AlarmClock = () => {
     }
 
     const wallpaperChange = () => {
-        currentsong.current.play()
+        window.location.reload()
     }
 
     return (
@@ -122,6 +122,8 @@ const AlarmClock = () => {
                         </div>
                         <div className="flex-column-center modal-bg3">
                             {/* modal-body  */}
+                            <div className="flex-column-center modal-bg3">
+                            {/* modal-body  */}
 
                             <select className='selectalarm cursor' id='alarmhrs' defaultValue={alarmHr} onChange={(e) => setalarmHr(e.target.value)}>
                                 {hrsOptions.map((option) => { return <option value={option} key={option}>{option >=0 && option <=9 ? "0"+option : option}</option> })}
@@ -144,6 +146,7 @@ const AlarmClock = () => {
 
                             <button className="buttonalarm" type="button" onClick={wallpaperChange}>Change
                                 wallpaper</button>
+                        </div>
                         </div>
                     </div>
                     {/* modal ends  */}

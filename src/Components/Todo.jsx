@@ -45,7 +45,7 @@ const Todo = () => {
   return (
     <>
       <Navbar />
-      <div className="flex-column-center">
+      <div className="flex-column-center ">
         <div className="flex-row-center">
           <input
             type="text"
