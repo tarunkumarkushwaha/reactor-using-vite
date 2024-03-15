@@ -99,15 +99,15 @@ button {
   font-weight: bold;
   color: #000333;
   height: 40px;
-  width: 100px;
+  width: 70px;
   margin: 5px;
   border-radius: 15px;
-  background-color: #5efdd5;
+  background-color:#aef3e1;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
 }
 
 button:active {
-  background-color: #2b998a;
+  background-color: #66ada4;
 }
 
 button:hover,
@@ -142,7 +142,7 @@ select:hover {
 }
 
 .calculator {
-  background-color: #b4d7c6;
+  background-color:#dfdfdf;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   margin: 8px auto;
   padding: 10px;
@@ -160,7 +160,8 @@ select:hover {
 }
 
 .calcbutton {
-  background-color: #60a2af;
+  background-color: #00171b;
+  color: wheat;
   font-size: 30px;
   font-weight: bold;
   width: 120px;
@@ -178,7 +179,7 @@ select:hover {
 }
 
 .notepad-display {
-  background-color: #d9dce7;
+  background-color:#d9e5e7;
   margin: 15px auto;
   padding: 12px;
   width: 96vw;
@@ -219,7 +220,7 @@ select:hover {
   font-size: 15px;
   font-weight: 550;
   color: #000333;
-  background-color: #5efdd5;
+  background-color:#aef3e1;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   width: 100px;
   height: 40px;
@@ -281,7 +282,7 @@ textarea {
 
 .clock-body {
   font-family: 'Kanit', sans-serif;
-  background-image: url(https://source.unsplash.com/featured/1600x900);
+  /* background-image: url(https://source.unsplash.com/featured/1600x900); */
   background-repeat: no-repeat;
   height: 75vh;
 }
@@ -480,7 +481,7 @@ textarea {
   margin: 10px;
   height: 40px;
   border-radius: 15px;
-  padding: 15px 15px;
+  padding: 10px 10px;
   text-align: center;
   color: white;
   border: 2px solid #44eed7;
@@ -506,6 +507,20 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+
+/* .capital:hover + .Extra-Text {
+  display: block;
+}
+
+.Extra-Text {
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  width: 200px;
+  border: 2px solid #000000;
+  padding: 10px;
+  font-size: 16px;
+  display: none;
+} */
 
 @media only screen and (max-width: 600px) {
 

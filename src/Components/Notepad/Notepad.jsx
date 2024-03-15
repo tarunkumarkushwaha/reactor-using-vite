@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import Navbar from '../navbar'
 import Replacemodal from './Replacemodal'
+import DeleteIcon from '@mui/icons-material/Delete';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
+import ContentCutIcon from '@mui/icons-material/ContentCut';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
+import PrintIcon from '@mui/icons-material/Print';
+import DownloadIcon from '@mui/icons-material/Download';
+
 function Notepad() {
 
   // states 
@@ -33,6 +41,14 @@ function Notepad() {
     navigator.clipboard.writeText(clipbrd.value)
     document.getSelection().removeAllRanges()
   }
+  const cut = () => {
+    let clipbrd = document.getElementById('textbox')
+    clipbrd.select()
+    navigator.clipboard.writeText(clipbrd.value)
+    document.getSelection().removeAllRanges()
+    setNotes("")
+    localStorage.setItem("key", "")
+  }
   const paste = async () => {
     const text = await navigator.clipboard.readText();
     setNotes(notes + text)
@@ -49,7 +65,7 @@ function Notepad() {
     localStorage.setItem("key", "")
   }
   const replace = () => {
-    setSelect(true)
+    setSelect(!select)
   }
   const closemodal = () => {
     setSelect(false)
@@ -79,9 +95,9 @@ function Notepad() {
   }
 
   // navbar button dropdown
-const myFunction =()=> {
-  mobilenav=="mobile-content"?setmobilenav("btn-list"):setmobilenav("mobile-content")
-}
+  const myFunction = () => {
+    mobilenav == "mobile-content" ? setmobilenav("btn-list") : setmobilenav("mobile-content")
+  }
 
   return (
     <>
@@ -89,28 +105,39 @@ const myFunction =()=> {
       <div className="dropdown">
         <button onClick={myFunction} className="dropbtn text-center">Menu</button>
       </div>
-      
+
       <div className={mobilenav} >
-        <button className="text-center border-transparent" onClick={capital1st}>
-          Capitalize
+        <button className="text-center capital border-transparent" onClick={capital1st}>
+          Aa
         </button>
+        {/* <div class="Extra-Text">
+        <p>
+        capital
+        </p>
+    </div> */}
         <button className="text-center border-transparent" onClick={upclick}>
-          All Upper
+          AA
         </button>
         <button className="text-center border-transparent" onClick={downclick}>
-          All Lower
+          aa
         </button>
         <button className="text-center border-transparent" onClick={eraseall}>
-          Erase all
+          <DeleteIcon />
+        </button>
+        <button className="text-center border-transparent" onClick={cut}>
+          <ContentCutIcon />
         </button>
         <button className="text-center border-transparent" onClick={copy}>
-          Copy
+          <ContentCopyIcon />
         </button>
         <button className="text-center border-transparent" onClick={paste}>
-          Paste
+          <ContentPasteGoIcon />
         </button>
         <button className="text-center border-transparent" onClick={replace}>
-          Replace
+          <PublishedWithChangesIcon />
+        </button>
+        <button className="text-center border-transparent" onClick={() => window.print()}>
+          <PrintIcon />
         </button>
         <select id="cards" onChange={fontstylecng} className='select border-transparent'>
           <option value="normal">normal</option>
@@ -125,7 +152,7 @@ const myFunction =()=> {
           <option value="xx-large">larger</option>
         </select>
         <button className="text-center border-transparent" onClick={requestTarunToDownload}>
-          Download
+          <DownloadIcon />
         </button>
       </div>
       {select ? <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} /> : null}

@@ -7,7 +7,7 @@ const CurrencyConverter = () => {
       <Navbar />
       <div className="flex-row-center">
         <div className="currencyBox flex-column-center">
-          <h1>CurrencyConverter</h1>
+          <h1>Currency Converter</h1>
           <h3>comming sooon</h3>
         </div>
       </div>
@@ -16,3 +16,4 @@ const CurrencyConverter = () => {
 }
 
 export default CurrencyConverter
+

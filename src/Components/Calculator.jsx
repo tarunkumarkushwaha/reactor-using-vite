@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import Navbar from './navbar'
 const Calculator = () => {
   const [Output, setOutput] = useState("");
+  const percentCalculator = (e) => {
+    let input = Output.split("/")
+    setOutput(eval(input[0]/input[1]*100).toString())
+  }
   const clicked = (e) => {
     setOutput(Output.concat(e.target.value))
   }
@@ -42,8 +46,8 @@ const Calculator = () => {
         <button value={"-"} className="calcbutton border-transparent" onClick={clicked}>-</button>
         <button value={"*"} className="calcbutton border-transparent" onClick={clicked}>x</button>
         <button value={"/"} className="calcbutton border-transparent" onClick={clicked}>/</button>
-        <button value={"%"} className="calcbutton border-transparent" onClick={clicked}>remnder</button>
-        <button value={"clear"} className="calcbutton border-transparent" onClick={clinicAllClear}>clear</button>
+        <button value={"%"} className="calcbutton border-transparent" onClick={percentCalculator}>%</button>
+        <button value={"clear"} className="calcbutton border-transparent" onClick={clinicAllClear}>C</button>
         <button value={"="} className="calcbutton border-transparent" onClick={result}>=</button>
       </div>
     </>

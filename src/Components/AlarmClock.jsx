@@ -3,6 +3,7 @@ import Navbar from "./navbar";
 
 const AlarmClock = () => {
     const [clockSetting, setclockSetting] = useState(false)
+    const [clockwallpaper, setclockwallpaper] = useState("https://source.unsplash.com/featured/1600x900")
     const [alarmON, setalarmON] = useState(false)
     const [time, settime] = useState("Fetching time")
     const [alarmMin, setalarmMin] = useState(0)
@@ -92,15 +93,16 @@ const AlarmClock = () => {
         clearInterval(intervalId.current)
     }
 
-    const wallpaperChange = () => {
-        window.location.reload()
+    const wallpaperChange = async () => {
+        const response = await fetch("https://source.unsplash.com/featured/1600x900");
+        setclockwallpaper(response.url)
     }
 
     return (
         <>
             <Navbar />
             <audio src={src} loop={true} ref={currentsong} crossOrigin={'anonymous'}></audio>
-            {!clockSetting && <div className="clock-body flex-column-center">
+            {!clockSetting && <div style={{backgroundImage: `url(${clockwallpaper})`}} className="clock-body flex-column-center">
                 {/* Button trigger modal  */}
                 <div className="flex-column-center dial1 cursor" title="click to open menu" onClick={() => setclockSetting(true)}>
                     <div className="flex-row-center">
