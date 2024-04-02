@@ -59,16 +59,6 @@ nav ul li a {
   margin: 50px;
 }
 
-.input-todo {
-  margin: 25px;
-  padding: 6px;
-  height: 40px;
-  width: 80vw;
-  background-color: #bde0fd;
-  font-size: larger;
-  line-height: 50px;
-}
-
 .flex-row-center {
   display: flex;
   flex-direction: row;
@@ -102,7 +92,7 @@ button {
   width: 70px;
   margin: 5px;
   border-radius: 15px;
-  background-color:#aef3e1;
+  background-color: #aef3e1;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
 }
 
@@ -114,13 +104,6 @@ button:hover,
 select:hover {
   border: 2px solid #005f57;
   transform: scale(1.05);
-}
-
-.todo-button {
-  height: 52px;
-  width: 60px;
-  background-color: #44eed7;
-  margin: 10px;
 }
 
 .text-center {
@@ -142,7 +125,7 @@ select:hover {
 }
 
 .calculator {
-  background-color:#dfdfdf;
+  background-color: #dfdfdf;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   margin: 8px auto;
   padding: 10px;
@@ -168,18 +151,8 @@ select:hover {
   height: 47px;
 }
 
-.todo-display {
-  background-color: #d7f4fa;
-  border-radius: 10px;
-  margin: 17px;
-  padding: 10px;
-  width: 80vw;
-  height: 50vh;
-  font-size: larger;
-}
-
 .notepad-display {
-  background-color:#d9e5e7;
+  background-color: #d9e5e7;
   margin: 15px auto;
   padding: 12px;
   width: 96vw;
@@ -193,12 +166,6 @@ select:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-.to-do {
-  text-align: left;
-  padding: 5px;
-  overflow-wrap: break-word;
 }
 
 .modal {
@@ -220,7 +187,7 @@ select:hover {
   font-size: 15px;
   font-weight: 550;
   color: #000333;
-  background-color:#aef3e1;
+  background-color: #aef3e1;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   width: 100px;
   height: 40px;
@@ -237,21 +204,73 @@ textarea {
   resize: none;
 }
 
+.to-do {
+  text-align: left;
+  padding-inline: 5px;
+  overflow-wrap: break-word;
+}
+
+.input-todo {
+  margin: 25px;
+  padding: 6px;
+  height: 40px;
+  width: 80vw;
+  background-color: #bde0fd;
+  font-size: larger;
+  line-height: 50px;
+}
+
+.todo-button {
+  height: 52px;
+  width: 60px;
+  background-color: #44eed7;
+  margin: 10px;
+}
+
 .deletetodo {
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 100%;
   color: red;
   background-color: #f7efeffd;
   border: 1px solid #000108;
-  position: relative;
-  bottom: 30px;
-  left: 38vw;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  padding: auto;
+}
+
+.todoCheck {
+  margin: 8px;
+}
+
+.completedtodo {
+  color: grey;
+  text-decoration: line-through;
+  text-align: left;
+  padding-inline: 5px;
+  overflow-wrap: break-word;
+}
+
+.todo-display {
+  background-color: #d7f4fa;
+  border-radius: 10px;
+  margin: 17px;
+  padding: 10px;
+  width: 80vw;
+  min-height: 50vh;
+  font-size: larger;
 }
 
 .tododiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  position: relative;
   background-color: #83c4f8;
   border: 2px solid #39a6ff;
-  ;
+  padding: 1%;
+  padding-inline: 2%;
   border-radius: 10px;
   margin: 5px;
 }
@@ -397,7 +416,7 @@ textarea {
   color: #000108;
 }
 
-.weathererror{
+.weathererror {
   background-color: #b4dbee;
   height: 50vh;
   width: 50vw;
@@ -496,7 +515,7 @@ textarea {
 
 /* currencyBox */
 
-.currencyBox{
+.currencyBox {
   margin: 30px;
   padding: 30px;
   background-color: #b4dbee;

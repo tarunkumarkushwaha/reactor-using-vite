@@ -2,25 +2,28 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 
 const Todo = () => {
-  // let num = localStorage.getItem("items") ? localStorage.getItem("items").split(",") : []
-
-  // states 
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState({
+    data: "",
+    completed: false
+  });
   const [todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
-  // display change event 
   const displaychange = (e) => {
-    setItem(e.target.value);
+    setItem({
+      data: e.target.value,
+      completed: false
+    });
   };
-  // button event 
+
   const addtodo = () => {
-    // settodo returns the initial state in the userstate
-    // it works as Array.push method 
     setTodo((olditems) => {
       return [...olditems, item]
     })
-    setItem('')
-    // save to localStorage
+    setItem({
+      data: "",
+      completed: false
+    });
+
     localStorage.setItem("items", JSON.stringify(todo))
   }
   const Delete = (a) => {
@@ -37,7 +40,7 @@ const Todo = () => {
       addtodo();
     }
   }
-  // when usestate todo changes function in use effect is called 
+
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(todo));
   }, [todo]);
@@ -49,7 +52,7 @@ const Todo = () => {
         <div className="flex-row-center">
           <input
             type="text"
-            value={item}
+            value={item.data}
             onChange={displaychange}
             onKeyDown={onEnterPress}
             placeholder="enter your task"
@@ -63,10 +66,19 @@ const Todo = () => {
           </button>
         </div>
         <div className="todo-display shadow text-center">
-          {todo.map((a) => {
-            return <div key={todo.indexOf(a) + 1} className="tododiv">
-              <p className="to-do" id={todo.indexOf(a) + "todoitem"}> {" "}
-                {todo.indexOf(a) + 1}. {a}
+          {todo.map((a, i) => {
+            return <div key={i} className="tododiv">
+              <input className="todoCheck" type="checkbox" checked={todo[i].completed}
+                onChange={(e) => {
+
+                  let modtodo = [...todo]
+                  modtodo[i].completed = e.target.checked
+                  setTodo(modtodo)
+
+                }} />
+              <p className={`${todo[i].completed ? "completedtodo" : "to-do"}`}>{i + 1}.{" "}</p>
+              <p className={`${todo[i].completed ? "completedtodo" : "to-do"}`}>
+                {a.data}
               </p>
               <b className="deletetodo" onClick={() => { deletetodo(a) }}>X</b>
             </div>
