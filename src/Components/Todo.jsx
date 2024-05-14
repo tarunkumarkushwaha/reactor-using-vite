@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./navbar";
 
 const Todo = () => {
   const [item, setItem] = useState({
@@ -47,7 +46,6 @@ const Todo = () => {
 
   return (
     <>
-      <Navbar />
       <div className="flex-column-center ">
         <div className="flex-row-center">
           <input

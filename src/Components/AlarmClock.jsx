@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import Navbar from "./navbar";
 
 const AlarmClock = () => {
     const [clockSetting, setclockSetting] = useState(false)
@@ -100,7 +99,6 @@ const AlarmClock = () => {
 
     return (
         <>
-            <Navbar />
             <audio src={src} loop={true} ref={currentsong} crossOrigin={'anonymous'}></audio>
             {!clockSetting && <div style={{backgroundImage: `url(${clockwallpaper})`}} className="clock-body flex-column-center">
                 {/* Button trigger modal  */}

@@ -7,27 +7,30 @@ import {
 import Calculator from "./Components/Calculator";
 import Footer from "./Components/Footer";
 import Todo from "./Components/Todo";
+import Tools from "./Components/Tools";
 import Notepad from "./Components/Notepad/Notepad";
 import AlarmClock from "./Components/AlarmClock";
 import CurrencyConverter from "./Components/CurrencyConverter";
 import WeatherWidget from "./Components/WeatherWidget";
 import Dictionary from "./Components/Dictionary";
+import Navbar from "./Components/navbar";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Notepad/>}/>
-        <Route path="/calculator" element={<Calculator/>}/>
-        <Route path="/todo" element={<Todo/>}/>
-        <Route path="/alarmclock" element={<AlarmClock/>}/>
-        <Route path="/currencyconverter" element={<CurrencyConverter/>}/>
-        <Route path="/weather" element={<WeatherWidget/>}/>
-        <Route path="/dictionary" element={<Dictionary/>}/>
-      </Routes>
-    </BrowserRouter>
-      <Footer/>
+        <Routes>
+          <Route path="/" element={<><Navbar /><Notepad /></>} />
+          <Route path="/calculator" element={<><Navbar /><Calculator /></>} />
+          <Route path="/todo" element={<><Navbar /><Todo /></>} />
+          <Route path="/alarmclock" element={<><Navbar /><AlarmClock /></>} />
+          <Route path="/currencyconverter" element={<><Navbar /><CurrencyConverter /></>} />
+          <Route path="/weather" element={<><Navbar /><WeatherWidget /></>} />
+          <Route path="/dictionary" element={<><Navbar /><Dictionary /></>} />
+          <Route path="/tools" element={<><Navbar /><Tools /></>} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
     </>
   );
 }

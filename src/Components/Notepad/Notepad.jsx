@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from '../navbar'
 import Replacemodal from './Replacemodal'
 import DeleteIcon from '@mui/icons-material/Delete';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -101,11 +100,9 @@ function Notepad() {
 
   return (
     <>
-      <Navbar />
       <div className="dropdown">
         <button onClick={myFunction} className="dropbtn text-center">Menu</button>
       </div>
-
       <div className={mobilenav} >
         <button className="text-center capital border-transparent" onClick={capital1st}>
           Aa

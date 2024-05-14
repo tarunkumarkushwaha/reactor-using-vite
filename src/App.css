@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
 
-.appnamediv {
+:root {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* .appnamediv {
   background-color: #bdd6eb;
-  border: 1px groove #bdd6eb9a;
+  border: 1px groove #6fa6d39a;
   border-radius: 10px;
 }
 
@@ -44,7 +51,7 @@ nav ul li a {
   height: 20px;
   color: black;
   list-style: none;
-}
+} */
 
 .active {
   background-color: #a8e7e9;

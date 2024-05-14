@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-body{
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background:#e9f8b9cc;
-}
-:root {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active {
+    background-color: #a8e7e9;
+    border: 2px groove rgba(144, 219, 219, 0.295);
+    border-radius: 10px;
+  }

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import Navbar from './navbar';
 import speaker from '../assets/images/speaker.png'
 
 const Dictionary = () => {
@@ -25,25 +24,7 @@ const Dictionary = () => {
             const response = await fetch(qwery);
             data = await response.json();
             setResult(data)
-            console.table(data);
-            // let arr = 
-            // let arr2 = arr.map((n) => n.slice(0, 1).toUpperCase().concat(n.slice(1).toLowerCase()))
-            // soundicon.setAttribute("src", "download.png")
-            // soundicon.setAttribute("class", "soundicon")
-            // soundicon.setAttribute("alt", "pronounciation")
-            // soundicon.setAttribute("title", "pronounciation")
-            // soundicon.setAttribute("onclick", "pronounciation()")
-            // title.innerHTML = arr2
-            // title.append(soundicon)
-            // data[0].meanings[0].definitions.length>2 ? noun.innerText = data[0].meanings[0].definitions[0].definition + "," +
-            //      data[0].meanings[0].definitions[1].definition : noun.innerText = data[0].meanings[0].definitions[0].definition
-            // verb.innerText = data[0].meanings[0].definitions[0].definition
-            // let synofiller = data[0].meanings[0].synonyms.toString()
-            // synonyms.innerText = synofiller.split(",").map((e) => { return e.concat(" ") })
-            // image.setAttribute("src", imagequery)
-            // image.removeAttribute("class")
-            // displayboard.removeAttribute("class")
-            // displayboard.setAttribute("class", "flex")
+            // console.table(data);
         }
         else {
             alert("enter any text")
@@ -63,7 +44,6 @@ const Dictionary = () => {
 
     return (
         <>
-            <Navbar />
             <audio src={SRCsound} loop={false} ref={currentsong} crossOrigin={'anonymous'}></audio>
             <div className="dictionarycontainer flex-row-center">
                 <div className="dictionarybox flex-row-center">

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Navbar from './navbar';
 
 const WeatherWidget = () => {
   const [input, setInput] = useState('');
@@ -56,7 +55,6 @@ const WeatherWidget = () => {
 
   return (
     <>
-      <Navbar />
       <div className="flex-column-center">
         
         <input

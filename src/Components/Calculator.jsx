@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from './navbar'
 const Calculator = () => {
   const [Output, setOutput] = useState("");
   const percentCalculator = (e) => {
@@ -28,7 +27,6 @@ const Calculator = () => {
   }
   return (
     <>
-      <Navbar />
       <div className="border-transparent calculator">
         <input type="text" className="calcdisplay shadow border-transparent" onChange={change} value={Output} onKeyDown={onEnterPress} />
         <button value={7} className="calcbutton border-transparent" onClick={clicked}>7</button>
