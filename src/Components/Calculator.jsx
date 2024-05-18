@@ -1,52 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 const Calculator = () => {
   const [Output, setOutput] = useState("");
   const percentCalculator = (e) => {
     let input = Output.split("/")
-    setOutput(eval(input[0]/input[1]*100).toString())
+    setOutput(eval(input[0] / input[1] * 100).toString())
   }
   const clicked = (e) => {
     setOutput(Output.concat(e.target.value))
   }
   const change = (e) => {
     setOutput(e.target.value)
-    // sorry "=" button on keyboard is not mapped, use enter key or "=" button on calculator to evaluate
-    // console.log(Output)
   }
   const result = () => {
-    setOutput(eval(Output).toString())
+    if (Output.length>1) {
+      setOutput(eval(Output).toString())
+    }
   }
   const clinicAllClear = () => {
     setOutput("")
   }
-  const onEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
-      // e.preventDefault();
-      result();
+
+  useEffect(() => {
+    const onkeyPress = (e) => {
+      if (e.key == "Enter") {
+        result();
+      }
+      else if (e.key == "Backspace") {
+        setOutput(prev => prev.split('').slice(0, -1).join(''))
+      }
+      else if (buttonnameArray.some(item => item == e.key)  && e.key !== ' ') {
+        setOutput(prev => prev.concat(e.key))
+      }
     }
-  }
+    window.addEventListener('keydown', onkeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', onkeyPress);
+    };
+  }, [Output]);
+
+  const buttonnameArray = [7, 8, 9, 4, 5, 6, 1, 2, 3, "+", 0, ".", "-", "*", "/"]
   return (
     <>
-      <div className="border-transparent calculator">
-        <input type="text" className="calcdisplay shadow border-transparent" onChange={change} value={Output} onKeyDown={onEnterPress} />
-        <button value={7} className="calcbutton border-transparent" onClick={clicked}>7</button>
-        <button value={8} className="calcbutton border-transparent" onClick={clicked}>8</button>
-        <button value={9} className="calcbutton border-transparent" onClick={clicked}>9</button>
-        <button value={4} className="calcbutton border-transparent" onClick={clicked}>4</button>
-        <button value={5} className="calcbutton border-transparent" onClick={clicked}>5</button>
-        <button value={6} className="calcbutton border-transparent" onClick={clicked}>6</button>
-        <button value={1} className="calcbutton border-transparent" onClick={clicked}>1</button>
-        <button value={2} className="calcbutton border-transparent" onClick={clicked}>2</button>
-        <button value={3} className="calcbutton border-transparent" onClick={clicked}>3</button>
-        <button value={0} className="calcbutton border-transparent" onClick={clicked}>0</button>
-        <button value={"+"} className="calcbutton border-transparent" onClick={clicked}>+</button>
-        <button value={"."} className="calcbutton border-transparent" onClick={clicked}>.</button>
-        <button value={"-"} className="calcbutton border-transparent" onClick={clicked}>-</button>
-        <button value={"*"} className="calcbutton border-transparent" onClick={clicked}>x</button>
-        <button value={"/"} className="calcbutton border-transparent" onClick={clicked}>/</button>
-        <button value={"%"} className="calcbutton border-transparent" onClick={percentCalculator}>%</button>
-        <button value={"clear"} className="calcbutton border-transparent" onClick={clinicAllClear}>C</button>
-        <button value={"="} className="calcbutton border-transparent" onClick={result}>=</button>
+      <div className="md:my-6 h-[65vh] my-20 rounded-xl flex flex-col justify-center items-center bg-[#dfdfdf] shadow-[0px_5px_5px_rgba(13,69,77,0.5)] mx-auto p-2.5 w-[390px]">
+        <input type="text" className="bg-white mt-6 pr-2 rounded-xl focus:outline-none text-right text-[50px] font-bold mx-[5px_2px_15px_5px] w-[380px] h-[83px] shadow border-transparent"
+          onChange={change} value={Output == "" ? 0 : Output} />
+        <div className='grid grid-cols-3 gap-3 my-5'>
+          {buttonnameArray.map((item, i) => (<button key={i} value={item} className="w-28 bg-white font-bold text-2xl border-transparent" onClick={clicked}>{item}</button>))}
+
+          <button value={"%"} className="w-28 bg-white font-bold text-2xl border-transparent" onClick={percentCalculator}>%</button>
+          <button value={"clear"} className="w-28 bg-white font-bold text-2xl border-transparent" onClick={clinicAllClear}>C</button>
+          <button value={"="} className="w-28 bg-white font-bold text-2xl border-transparent" onClick={result}>=</button>
+        </div>
       </div>
     </>
   )

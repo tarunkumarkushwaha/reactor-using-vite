@@ -8,7 +8,6 @@ const Tools = () => {
   const [functionInput2, setfunctionInput2] = useState("");
   const [activeFunction, setactiveFunction] = useState(functionarray[0]);
   const [showDropdown, setShowDropdown] = useState(false);
-  // const dropdownOptions = functionarray
 
   const inputRef = useRef(null);
 
@@ -73,7 +72,7 @@ const Tools = () => {
   }
 
   return (
-    <div className="container">
+    <div className="h-screen bg-slate-200 w-full">
       <div className="relative p-5 flex justify-center items-center" ref={inputRef}>
         <div className="flex w-80 border border-gray-300 rounded-md">
           <input
@@ -123,7 +122,7 @@ const Tools = () => {
             />
           }
         </div>
-        <button onClick={functionHandler} className=' todo-button'>Execute</button>
+        <button onClick={functionHandler} className='bg-white'>Execute</button>
         <div>
           output is {output}
         </div>

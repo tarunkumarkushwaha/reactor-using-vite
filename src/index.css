@@ -2,9 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.active {
-    background-color: #a8e7e9;
-    border: 2px groove rgba(144, 219, 219, 0.295);
-    border-radius: 10px;
-  }

@@ -1,17 +1,165 @@
 let str = "how to add translate button on to website you are making";
-let parstr = "race car"
-let arr
+let parstr = "raceCar"
+let password = "facebookiaPassword@"
 let word = "rationalIsation"
 let numarr = [1, 1, 2, 5, 3, 4, 9, 6, 1, 0, 7, 8, 9, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -5]
 let numarr2 = [1, 2, 4, 8, 1, 2, 2]
 let numarr3 = [10, 20, 30, 40]
+let emobj ={}
+let obj ={ram:123,shyam:123,rama:12233}
+let objarray = [ [ 'ram', 123 ], [ 'shyam', 123 ], [ 'rama', 12233 ] ]
 
-//please include any new function in function array last included was repeatationcheck
+//please include any new function in function array last included was hexcolgen
+
+const arrayToObject = (arr) =>{
+  // let outputobj = {}
+  // arr.forEach((item)=>{outputobj[item[0]] = item[1]})
+  // return outputobj
+  return Object.fromEntries(arr)
+}
+
+console.log(arrayToObject(objarray))
+
+const objectToarray = (object) =>{
+  // let key = Object.keys(object)
+  // let values = Object.values(object)
+  // return values.map((value,i)=>{return [key[i],value]})
+  return Object.entries(object)
+}
+
+// console.log(objectToarray(obj))
+
+const emptyObjetDetector = (object) =>{
+  let keyarr = []
+  for (const key in object) {
+    keyarr.push(key)
+  }
+  // return keyarr.length < 1 ? "object is empty" : "object is not empty"
+  return Object.keys(object).length < 1 ? "object is empty" : "object is not empty"
+}
+
+// console.log(emptyObjetDetector(emobj))
+
+const hexcolgen = () =>{
+  let color = "#"
+  for(let i = 0; i<6; i++){
+    color += Math.floor(Math.random()*16).toString(16)
+  }
+  return color
+}
+
+// console.log(hexcolgen())
+
+const passwordValidator = (pass) => {
+  let passobject = { password: pass, error: false, errormessege: "" }
+  if (pass.length > 8) {
+    let capital = []
+    let small = []
+    let specialordigit = []
+    pass.split('').map((char) => {
+      if (char.charCodeAt() >= 65 && char.charCodeAt() <= 90) {
+        capital.push(char)
+      }
+      else if (char.charCodeAt() >= 97 && char.charCodeAt() <= 122) {
+        small.push(char)
+      } else { specialordigit.push(char) }
+    })
+    if (capital.length < 1) {
+      passobject.error = true
+      passobject.errormessege = "password must contain a capital letter"
+      return passobject
+    }
+    if (specialordigit.length < 1) {
+      passobject.error = true
+      passobject.errormessege = "password must contain a special letter"
+      return passobject
+    }
+    else { return passobject }
+  }
+  else if (pass.length < 8 || pass.length == 0) {
+    passobject.error = true
+    passobject.errormessege = "password must be of 8 characters"
+    return passobject
+  }
+}
+
+// console.log(passwordValidator(password))
+
+const numberGenerator = (a, b, arr = []) => {
+  // for (let index = a; index <= b; index++) {
+  //   arr.push(index) 
+  // }
+  // return arr
+
+  // important
+
+  if (a <= b) {
+    arr.push(a);
+    return numberGenerator(a + 1, b, arr)
+  }
+  return arr
+}
+
+// console.log(numberGenerator(-2, 10))
+
+const truncateString = (str, maxLength) => {
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength).concat('...')
+  } else { return str }
+}
+
+// console.log(truncateString(parstr, 4))
+
+const repeatString = (str, times) => {
+  // if (times <= 0) {
+  //   return "enter valid string";
+  // } else if (times === 1) {
+  //   return str;
+  // } else {
+  //   return str + repeatString(str, times - 1);
+  // }
+  return times > 0 ? str.repeat(times) : "enter valid string"
+}
+
+// console.log(repeatString("robo-", 4))
+
+const FibonacciCalculator = (num) => {
+  //   if (num == 0) {
+  //     return num
+  //   }
+  //   else {
+  //     let result = [0, 1]
+  //     for (let i = 1; i < num-1; i++) {
+  //       result.push(result[i] + result[i - 1])
+  //     }
+  //     return result[result.length - 1]
+  //   }
+  if (num <= 1) {
+    return num;
+  } else {
+    return FibonacciCalculator(num - 1) + FibonacciCalculator(num - 2);
+  }
+}
+
+// console.log(FibonacciCalculator(7))
 
 const repetationCheck = (array) => {
+  let max = 0
   let output = {}
-  for (const element of new Set([...array])) {
-    output[element] = array.filter(item => item == element).length
+  // for (const element of new Set([...array])) {
+  //   output[element] = array.filter(item => item == element).length
+  //   if (max < output[element]) {
+  //     max = element
+  //     output.maxRepeatedNo = max
+  //   }
+  // }
+
+  for (const element of array) {
+    output[element] = (output[element] || 0) + 1
+    if (max < output[element]) {
+      max = element
+      output.maxRepeatedNo = max
+    }
   }
   return output
 }
@@ -147,15 +295,18 @@ const arrayEqualityCheck = (arr1, arr2) => {
 // console.log(arrayEqualityCheck(numarr3, numarr2))
 
 const factorialCalculator = (num) => {
-  if (num === 0) {
+  if (num == 0) {
     return 1
   }
   else {
-    let result = num
-    for (let i = 1; i < num; i++) {
-      result = result * (num - i)
-    }
-    return result
+    // let result = num
+    // for (let i = 1; i < num; i++) {
+    //   result = result * (num - i)
+    // }
+    // return result
+
+    // BY RECURSION 
+    return num * factorialCalculator(num - 1)
   }
 }
 
@@ -272,6 +423,11 @@ const functionarray = [
     name: "occurance of word",
     inputs: ["sentance", "word"],
     function: occuranceword
+  },
+  {
+    name: "random color generator",
+    inputs: ["string"],
+    function: hexcolgen
   }
   ,
   // {
@@ -303,6 +459,11 @@ const functionarray = [
     name: "convert To CamelCase",
     inputs: ["string"],
     function: convertToCamelCase
+  },
+  {
+    name: "Nth Fibonacci no",
+    inputs: ["number"],
+    function: FibonacciCalculator
   },
   {
     name: "sum of Square numbers",

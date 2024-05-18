@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { addTodo, deleteall } from "../features/todos/todoSlice";
+import { deletetodo } from '../features/todos/todoSlice'
+import { modTodo } from "../features/todos/todoSlice";
 
 const Todo = () => {
   const [item, setItem] = useState({
     data: "",
     completed: false
   });
-  const [todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')) || []);
+
+  const todo = useSelector((state) => state.TODO)
+
+  const dispatch = useDispatch()
 
   const displaychange = (e) => {
     setItem({
@@ -15,24 +22,14 @@ const Todo = () => {
   };
 
   const addtodo = () => {
-    setTodo((olditems) => {
-      return [...olditems, item]
-    })
+    dispatch(addTodo(item))
     setItem({
       data: "",
       completed: false
     });
-
     localStorage.setItem("items", JSON.stringify(todo))
   }
-  const Delete = (a) => {
-    setTodo([])
-    localStorage.clear()
-  }
-  const deletetodo = (a) => {
-    setTodo(todo.filter((e) => { return e !== a }))
-    localStorage.setItem('items', JSON.stringify(todo));
-  }
+
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
@@ -44,42 +41,59 @@ const Todo = () => {
     localStorage.setItem('items', JSON.stringify(todo));
   }, [todo]);
 
+  const Todo = ({ item, i }) => {
+    const dispatch = useDispatch()
+
+    return (
+      <>
+        <div className="tododiv">
+          <input className="todoCheck" type="checkbox"
+            checked={item.completed}
+            onChange={(e) => {
+              dispatch(modTodo({
+                value: item.data,
+                check: e.target.checked,
+                id: i
+              }))
+            }}
+          />
+          <p className={`${item.completed ? "completedtodo" : "to-do"}`}>{i + 1}.{" "}</p>
+          <p className={`${item.completed ? "completedtodo" : "to-do"}`}>
+            {item.data}
+          </p>
+          <p className="deletetodo" onClick={() => dispatch(deletetodo(i))}>X</p>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
-      <div className="flex-column-center ">
-        <div className="flex-row-center">
+      <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center">
           <input
             type="text"
             value={item.data}
             onChange={displaychange}
             onKeyDown={onEnterPress}
             placeholder="enter your task"
-            className="border-transparent shadow input-todo"
+            className="p-4 border w-[70vw] h-14 rounded-xl m-4 focus:outline-none shadow-[0px_5px_5px_rgba(13,69,77,0.5)]"
           ></input>
-          <button className="text-center border-transparent shadow todo-button" onClick={addtodo}>
+          <button className="text-center m-2" onClick={addtodo}>
             Add
           </button>
-          <button className="text-center border-transparent shadow todo-button" onClick={Delete}>
+          <button className="text-center m-2" onClick={() => dispatch(deleteall())}>
             Reset
           </button>
         </div>
-        <div className="todo-display shadow text-center">
-          {todo.map((a, i) => {
-            return <div key={i} className="tododiv">
-              <input className="todoCheck" type="checkbox" checked={todo[i].completed}
-                onChange={(e) => {
-
-                  let modtodo = [...todo]
-                  modtodo[i].completed = e.target.checked
-                  setTodo(modtodo)
-
-                }} />
-              <p className={`${todo[i].completed ? "completedtodo" : "to-do"}`}>{i + 1}.{" "}</p>
-              <p className={`${todo[i].completed ? "completedtodo" : "to-do"}`}>
-                {a.data}
-              </p>
-              <b className="deletetodo" onClick={() => { deletetodo(a) }}>X</b>
-            </div>
+        <div className="flex justify-center items-center">
+          <p className="mx-5 font-medium">Completed tasks - {todo.filter((i) => i.completed == true).length} </p>
+          <p className="mx-5 font-medium">Uncompleted tasks - {todo.length && todo.length - todo.filter((i) => i.completed == true).length} </p>
+          <p className="mx-5 font-medium">Total tasks - {todo.length && todo.length}</p>
+        </div>
+        <div className="todo-display text-center">
+          {todo.map((item, i) => {
+            return <Todo key={i} item={item} i={i} />
           })}
         </div>
       </div>

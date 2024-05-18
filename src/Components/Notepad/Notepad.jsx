@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Replacemodal from './Replacemodal'
 import DeleteIcon from '@mui/icons-material/Delete';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -17,7 +17,7 @@ function Notepad() {
   const [newword, setNewword] = useState("")
   const [font, setFont] = useState("normal")
   const [size, setSize] = useState("larger")
-  const [mobilenav, setmobilenav] = useState("btn-list")
+  const [mobilenav, setmobilenav] = useState(false)
 
   // displaychange handler 
   const displaychange = (e) => {
@@ -95,23 +95,30 @@ function Notepad() {
 
   // navbar button dropdown
   const myFunction = () => {
-    mobilenav == "mobile-content" ? setmobilenav("btn-list") : setmobilenav("mobile-content")
+    setmobilenav(!mobilenav)
   }
+
+  const handleResize = () => {
+    window.innerWidth < 768 ? setmobilenav(true) : setmobilenav(false)
+  };
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
-      <div className="dropdown">
-        <button onClick={myFunction} className="dropbtn text-center">Menu</button>
+      <div className="md:hidden flex justify-center mt-10">
+        <button onClick={myFunction} className=" text-center border-transparent">Menu</button>
       </div>
-      <div className={mobilenav} >
-        <button className="text-center capital border-transparent" onClick={capital1st}>
+      <div style={{ display: mobilenav ? 'none' : 'flex' }} className={`hidden md:flex md:mt-1 flex-wrap gap-2 justify-center items-center`} >
+        <button className="text-center border-transparent" onClick={capital1st}>
           Aa
         </button>
-        {/* <div class="Extra-Text">
-        <p>
-        capital
-        </p>
-    </div> */}
         <button className="text-center border-transparent" onClick={upclick}>
           AA
         </button>
@@ -136,11 +143,11 @@ function Notepad() {
         <button className="text-center border-transparent" onClick={() => window.print()}>
           <PrintIcon />
         </button>
-        <select id="cards" onChange={fontstylecng} className='select border-transparent'>
+        <select id="cards" onChange={fontstylecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="normal">normal</option>
           <option value="italic">Italic</option>
         </select>
-        <select id="cards2" onChange={fontsizecng} className='select border-transparent'>
+        <select id="cards2" onChange={fontsizecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="larger">Size</option>
           <option value="larger">normal</option>
           <option value="medium">very small</option>
@@ -152,8 +159,8 @@ function Notepad() {
           <DownloadIcon />
         </button>
       </div>
-      {select ? <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} /> : null}
-      <div className="flex-row-center">
+      {select && <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} />}
+      <div className="flex justify-center items-center">
         <textarea
           id='textbox'
           rows="10" cols="100"
@@ -161,10 +168,10 @@ function Notepad() {
           onChange={displaychange}
           style={{ fontStyle: font, fontSize: size }}
           placeholder="write something..."
-          className="notepad-display border-transparent shadow"
+          className="shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border border-slate-400 rounded-2xl resize-none m-4 mx-auto p-3 w-[96vw] md:h-[55vh] h-[62vh] text-lg focus:outline-none"
         ></textarea>
       </div>
-      <div className='border-groove-light to-do'>no of words - {notes.split(" ").filter((a) => a != 0).length} and no of characters - {notes.length}</div>
+      <div className='rounded-lg font-semibold bg-blue-100 px-10 w-full border border-blue-100 text-center'>words - {notes.split(" ").filter((a) => a != 0).length} and characters - {notes.length}</div>
     </>
 
   )
