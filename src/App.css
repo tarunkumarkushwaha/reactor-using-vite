@@ -3,6 +3,29 @@
   padding: 0;
 }
 
+.smooth-entry {
+  animation-name: entry;
+  animation-duration: 0.25s;
+}
+
+@keyframes entry {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .active {
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
   border-radius: 15px;
@@ -56,8 +79,8 @@ select:hover {
   background-color: #f7efeffd;
   border: 1px solid #000108;
   position: absolute;
-  top: 7px;
-  right: 10px;
+  top: 3px;
+  right: 5px;
   width: 25px;
   padding: auto;
 }
@@ -101,17 +124,12 @@ select:hover {
 /* clockcss */
 
 .clock-body {
-  font-family: 'Kanit', sans-serif;
-  /* background-image: url(https://source.unsplash.com/featured/1600x900); */
   background-repeat: no-repeat;
-  height: 75vh;
 }
 
 .dial1 {
   background-color: #abb5b88e;
   border-radius: 10px;
-  width: 50vw;
-  padding-block: 3%;
 }
 
 .cursor {
@@ -132,20 +150,6 @@ select:hover {
   padding-top: 20px;
 }
 
-#day {
-  font-size: 50px;
-  text-align: center;
-  width: 50vw;
-}
-
-#ghari {
-  font-size: 100px;
-  text-align: center;
-  font-weight: bold;
-  /* height: 140px; */
-  /* margin: 0 20px 0 20px; */
-}
-
 .clocksettingmenu {
   height: 75vh;
 }
@@ -155,14 +159,7 @@ select:hover {
   background-color: #c2dfdf;
   height: 30px;
   width: 30px;
-}
-
-#AMPM {
-  font-size: 100px;
-  text-align: center;
-  font-weight: bold;
-  /* height: 140px; */
-  margin: 0 10px 0 10px;
+  margin-left: 20px;
 }
 
 .alarmtimebox {
@@ -198,9 +195,6 @@ select:hover {
 /* weather/ */
 
 .weathersearch {
-  text-align: center;
-  margin: 10px;
-  padding: 6px;
   height: 40px;
   width: 50vw;
   background-color: #bde0fd;
@@ -229,22 +223,12 @@ select:hover {
 
 /* .dictionary */
 
-.dictionarycontainer {
-  background-color: #ebf1f093;
-  border: 1px solid #c7c7c7;
-  padding: 50px;
-  width: auto;
-  height: 60vh;
-}
-
 .dictionarybox {
   background-color: #a2f5dc93;
   border: 1px solid #1249ff52;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 50px;
-  width: 35vw;
-  height: 47vh;
   margin: 10px;
   margin-inline: 10px;
 }
@@ -271,8 +255,6 @@ select:hover {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px;
-  width: 50vw;
-  height: 60vh;
   margin: 10px;
   margin-inline: 10px;
 }
@@ -326,49 +308,4 @@ select:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-
-@media only screen and (max-width: 600px) {
-
-  .input-todo {
-    width: 50vw;
-    margin: 15px;
-  }
-
-  .todo-button {
-    width: 50px;
-    margin: 5px;
-  }
-
-  /* clockcss */
-  #AMPM {
-    margin: 0 100px 0 120px;
-    font-size: 50px;
-    height: 75px;
-  }
-
-
-  #day {
-    font-weight: bold;
-    width: 95vw;
-  }
-
-  .button {
-    margin-left: 80px;
-  }
-
-  .clock-body {
-    background-image: url(https://source.unsplash.com/featured/700x1600);
-  }
-
-  #ghari {
-    font-size: 88px;
-    margin: 0px;
-  }
-
-  .dial1 {
-    width: 95vw;
-    margin: 10px;
-  }
 }

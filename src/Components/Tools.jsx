@@ -56,6 +56,10 @@ const Tools = () => {
     let result = ""
     if (activeFunction.inputs[0] == "string") {
       result = await activeFunction.function(functionInput1)
+      // if (typeof result == "boolean" && result == true) {
+      //   result = "yes"
+      // }else{result = "no"}
+      // console.log(result,"nochange ",typeof result)
     }
     else if (activeFunction.inputs[0] == "number") {
       result = await activeFunction.function(parseInt(functionInput1))
@@ -72,7 +76,7 @@ const Tools = () => {
   }
 
   return (
-    <div className="h-screen bg-slate-200 w-full">
+    <div className="h-screen bg-gradient-to-b from-white to-blue-300 w-full smooth-entry">
       <div className="relative p-5 flex justify-center items-center" ref={inputRef}>
         <div className="flex w-80 border border-gray-300 rounded-md">
           <input

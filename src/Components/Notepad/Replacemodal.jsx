@@ -10,7 +10,7 @@ const Replacemodal = ({ prevword, newword, setPrevword, setNewword, closemodal }
   return (
     <>
       {/* no fade effect side click modal close has to be added */}
-      <div className='bg-white shadow-[0px_5px_5px_rgba(13,69,77,0.5)] rounded-xl left-1/2 -translate-x-1/2 p-4 absolute top-1/3'>
+      <div className='bg-white smooth-entry shadow-[0px_5px_5px_rgba(13,69,77,0.5)] rounded-xl left-1/2 -translate-x-1/2 p-4 absolute top-1/3'>
         <input
           type="text"
           className="text-center border border-black h-10 rounded-xl m-4 focus:outline-none"

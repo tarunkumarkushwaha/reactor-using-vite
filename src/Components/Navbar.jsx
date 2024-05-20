@@ -24,14 +24,14 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <div className="flex h-20 items-center justify-center bg-blue-100 border">
+        <div className="flex h-20 items-center justify-center bg-blue-300 ">
         <button className='absolute top-4 left-4 md:hidden w-12 text-black bg-white' onClick={togglenav}>
           <MenuIcon/>
         </button>
           <img className='w-44 h-16 md:ml-0 ml-10 rounded-xl' src={Logo} alt="Utility Box" />
         </div>
         {nav &&
-          <nav className="bg-gradient-to-b from-blue-100 font-medium to-white min-h-16">
+          <nav className="bg-gradient-to-b from-blue-300 to-white min-h-16 font-medium smooth-entry">
             <ul className="flex flex-wrap justify-center">
               <li className="list-none">
                 <NavLink to={"/"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Notepad</NavLink>

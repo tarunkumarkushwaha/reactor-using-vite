@@ -1,4 +1,4 @@
-let str = "how to add translate button on to website you are making";
+let str = "how to add translate / button on to website you are making";
 let parstr = "raceCar"
 let password = "facebookiaPassword@"
 let word = "rationalIsation"
@@ -11,6 +11,15 @@ let objarray = [ [ 'ram', 123 ], [ 'shyam', 123 ], [ 'rama', 12233 ] ]
 
 //please include any new function in function array last included was hexcolgen
 
+const checkPalindrome = (str) => {
+  if (!str || str.length <= 0) { return false }
+  let str1 = str.toLowerCase().replace(/\W/g, "").trim()
+  let str2 = str.toLowerCase().replace(/\W/g, "").trim().split("").reverse().join("")
+  return str2 == str1
+}
+
+// console.log(checkPalindrome(str))
+
 const arrayToObject = (arr) =>{
   // let outputobj = {}
   // arr.forEach((item)=>{outputobj[item[0]] = item[1]})
@@ -18,7 +27,7 @@ const arrayToObject = (arr) =>{
   return Object.fromEntries(arr)
 }
 
-console.log(arrayToObject(objarray))
+// console.log(arrayToObject(objarray))
 
 const objectToarray = (object) =>{
   // let key = Object.keys(object)
@@ -332,15 +341,6 @@ const checkMin = (numarray) => {
 }
 
 // console.log(checkMin(numarr))
-
-const checkPalindrome = (str) => {
-  if (!str || str.length <= 0) { return false }
-  let str1 = str.toLowerCase().replace(/\W/g, "").trim()
-  let str2 = str.toLowerCase().replace(/\W/g, "").trim().split(" ").reverse().join(" ")
-  return str2 == str1
-}
-
-// console.log(checkPalindrome(parstr))
 
 const checkTriangleType = (a, b, c) => {
   if (a == b && b == c) { return "equlateral tringle" }

@@ -45,29 +45,29 @@ const Dictionary = () => {
     return (
         <>
             <audio src={SRCsound} loop={false} ref={currentsong} crossOrigin={'anonymous'}></audio>
-            <div className="dictionarycontainer flex-row-center">
-                <div className="dictionarybox flex-row-center">
+            <div className="smooth-entry h-[80vh] flex flex-col justify-center items-center md:mt-0 mt-28">
+                <div className="dictionarybox flex md:flex-row flex-col justify-center items-center">
                     <input
                         type="text"
                         value={input}
                         onChange={displaychange}
                         onKeyDown={onEnterPress}
                         placeholder="enter word"
-                        className="border-transparent shadow wordsearch"
+                        className="focus:outline-none w-full max-w-96 bg-white shadow wordsearch"
                     ></input>
-                    <div className="flex-row-center wrap">
-                        <button className="searchWordbtn" onClick={searchWord}>Search</button>
-                        <button className="searchWordbtn" onClick={() => window.location.reload()}>Refresh</button>
+                    <div className="flex md:flex-row flex-col justify-center items-center wrap">
+                        <button className="m-3 bg-slate-100" onClick={searchWord}>Search</button>
+                        <button className="m-3 bg-slate-100" onClick={() => window.location.reload()}>Refresh</button>
                     </div>
                 </div>
-                <div className="resultbox flex-row-center">
+                <div className={`resultbox ${Result ? "flex" : "hidden"} flex-col justify-center items-center`}>
                     {
-                        Result && Result.message ? <div className='flex-column-center'>
+                        Result && Result.message ? <div className='flex flex-col justify-center items-center'>
                             <h1>{Result.title}</h1>
                             <div>{Result.message}</div>
                             <div>{Result.resolution}</div>
                             </div> : Result ? <>
-                            <div className="flex-column-center">
+                            <div className="flex flex-col justify-center items-center">
                                 <img className='resultimagedictionary' src={ResultImage} alt={input} />
                                 <div className="flex-row-center">
                                     <h1>{Result && Result[0].word.split(" ").map((n) => n.slice(0, 1).toUpperCase().concat(n.slice(1).toLowerCase()))}</h1>
@@ -77,7 +77,7 @@ const Dictionary = () => {
                                     {Result && Result[0].meanings[0].synonyms.toString().split(",").map((e) => { return e.concat(" ") })}
                                 </h4>
                             </div>
-                            <div className='flex-column-center meaningbox'>
+                            <div className='flex flex-col justify-center items-center meaningbox'>
                                 <div><b className='textdict'>Meaning - </b>
                                     {Result && Result[0].meanings[0].definitions.length > 2 ? Result && Result[0].meanings[0].definitions[0].definition + "," +
                                         Result[0].meanings[0].definitions[1].definition : Result && Result[0].meanings[0].definitions[0].definition}
@@ -86,7 +86,7 @@ const Dictionary = () => {
                                     {Result && Result[0].meanings[0].definitions[0].definition}
                                 </div>
                             </div>
-                        </>: <><h1>enter word to search </h1></>
+                        </>: <><h1>Output -</h1></>
                     }
                 </div>
             </div>

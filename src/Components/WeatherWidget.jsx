@@ -55,7 +55,7 @@ const WeatherWidget = () => {
 
   return (
     <>
-      <div className="flex-column-center">
+      <div className="bg-gradient-to-b h-[80vh] from-white to-blue-300 flex flex-col justify-center items-center md:mt-0 mt-28 smooth-entry">
         
         <input
           type="text"
@@ -63,9 +63,9 @@ const WeatherWidget = () => {
           onChange={displaychange}
           onKeyDown={onEnterPress}
           placeholder="enter location"
-          className="border-transparent shadow weathersearch"
+          className="focus:outline-none rounded-xl p-4 border border-slate-400 shadow weathersearch"
         ></input>
-        <div className="WeatherContainer border-transparent shadow flex-column-center">
+        <div className="rounded-xl border p-5 m-5 bg-white shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border-slate-500 flex flex-col justify-center items-center">
           
           {weatherData ? weatherData.error ? <>
             <div className='failed'>failed to load</div>

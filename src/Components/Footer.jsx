@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='relative mt-4 bottom-0 w-full text-center text-sm font-medium'>Utility Box</div>
+    <div className='md:pt-0 bg-blue-300 pt-3 w-full text-center text-sm font-medium'>Utility Box</div>
   )
 }
 

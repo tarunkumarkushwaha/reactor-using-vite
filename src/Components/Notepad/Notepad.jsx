@@ -111,7 +111,7 @@ function Notepad() {
   }, []);
 
   return (
-    <>
+    <div className='smooth-entry'>
       <div className="md:hidden flex justify-center mt-10">
         <button onClick={myFunction} className=" text-center border-transparent">Menu</button>
       </div>
@@ -168,11 +168,11 @@ function Notepad() {
           onChange={displaychange}
           style={{ fontStyle: font, fontSize: size }}
           placeholder="write something..."
-          className="shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border border-slate-400 rounded-2xl resize-none m-4 mx-auto p-3 w-[96vw] md:h-[55vh] h-[62vh] text-lg focus:outline-none"
+          className="shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border border-slate-400 rounded-2xl resize-none m-4 mx-auto p-3 w-[96vw] md:h-[60vh] h-[62vh] text-lg focus:outline-none"
         ></textarea>
       </div>
-      <div className='rounded-lg font-semibold bg-blue-100 px-10 w-full border border-blue-100 text-center'>words - {notes.split(" ").filter((a) => a != 0).length} and characters - {notes.length}</div>
-    </>
+      <div className='md:text-base text-xs font-semibold bg-gradient-to-b from-white to-blue-300 px-10 w-full text-start'>words - {notes.split(" ").filter((a) => a != 0).length} and characters - {notes.length}</div>
+    </div>
 
   )
 }
