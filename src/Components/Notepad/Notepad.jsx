@@ -1,6 +1,13 @@
-import React, { useState } from 'react'
-import Navbar from '../navbar'
+import React, { useEffect, useState } from 'react'
 import Replacemodal from './Replacemodal'
+import DeleteIcon from '@mui/icons-material/Delete';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
+import ContentCutIcon from '@mui/icons-material/ContentCut';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
+import PrintIcon from '@mui/icons-material/Print';
+import DownloadIcon from '@mui/icons-material/Download';
+
 function Notepad() {
 
   // states 
@@ -10,7 +17,7 @@ function Notepad() {
   const [newword, setNewword] = useState("")
   const [font, setFont] = useState("normal")
   const [size, setSize] = useState("larger")
-  const [mobilenav, setmobilenav] = useState("btn-list")
+  const [mobilenav, setmobilenav] = useState(false)
 
   // displaychange handler 
   const displaychange = (e) => {
@@ -33,6 +40,14 @@ function Notepad() {
     navigator.clipboard.writeText(clipbrd.value)
     document.getSelection().removeAllRanges()
   }
+  const cut = () => {
+    let clipbrd = document.getElementById('textbox')
+    clipbrd.select()
+    navigator.clipboard.writeText(clipbrd.value)
+    document.getSelection().removeAllRanges()
+    setNotes("")
+    localStorage.setItem("key", "")
+  }
   const paste = async () => {
     const text = await navigator.clipboard.readText();
     setNotes(notes + text)
@@ -49,7 +64,7 @@ function Notepad() {
     localStorage.setItem("key", "")
   }
   const replace = () => {
-    setSelect(true)
+    setSelect(!select)
   }
   const closemodal = () => {
     setSelect(false)
@@ -79,44 +94,60 @@ function Notepad() {
   }
 
   // navbar button dropdown
-const myFunction =()=> {
-  mobilenav=="mobile-content"?setmobilenav("btn-list"):setmobilenav("mobile-content")
-}
+  const myFunction = () => {
+    setmobilenav(!mobilenav)
+  }
+
+  const handleResize = () => {
+    window.innerWidth < 768 ? setmobilenav(true) : setmobilenav(false)
+  };
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <>
-      <Navbar />
-      <div className="dropdown">
-        <button onClick={myFunction} className="dropbtn text-center">Menu</button>
+    <div className='smooth-entry'>
+      <div className="md:hidden flex justify-center mt-10">
+        <button onClick={myFunction} className=" text-center border-transparent">Menu</button>
       </div>
-      
-      <div className={mobilenav} >
+      <div style={{ display: mobilenav ? 'none' : 'flex' }} className={`hidden md:flex md:mt-1 flex-wrap gap-2 justify-center items-center`} >
         <button className="text-center border-transparent" onClick={capital1st}>
-          Capitalize
+          Aa
         </button>
         <button className="text-center border-transparent" onClick={upclick}>
-          All Upper
+          AA
         </button>
         <button className="text-center border-transparent" onClick={downclick}>
-          All Lower
+          aa
         </button>
         <button className="text-center border-transparent" onClick={eraseall}>
-          Erase all
+          <DeleteIcon />
+        </button>
+        <button className="text-center border-transparent" onClick={cut}>
+          <ContentCutIcon />
         </button>
         <button className="text-center border-transparent" onClick={copy}>
-          Copy
+          <ContentCopyIcon />
         </button>
         <button className="text-center border-transparent" onClick={paste}>
-          Paste
+          <ContentPasteGoIcon />
         </button>
         <button className="text-center border-transparent" onClick={replace}>
-          Replace
+          <PublishedWithChangesIcon />
         </button>
-        <select id="cards" onChange={fontstylecng} className='select border-transparent'>
+        <button className="text-center border-transparent" onClick={() => window.print()}>
+          <PrintIcon />
+        </button>
+        <select id="cards" onChange={fontstylecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="normal">normal</option>
           <option value="italic">Italic</option>
         </select>
-        <select id="cards2" onChange={fontsizecng} className='select border-transparent'>
+        <select id="cards2" onChange={fontsizecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="larger">Size</option>
           <option value="larger">normal</option>
           <option value="medium">very small</option>
@@ -125,11 +156,11 @@ const myFunction =()=> {
           <option value="xx-large">larger</option>
         </select>
         <button className="text-center border-transparent" onClick={requestTarunToDownload}>
-          Download
+          <DownloadIcon />
         </button>
       </div>
-      {select ? <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} /> : null}
-      <div className="flex-row-center">
+      {select && <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} />}
+      <div className="flex justify-center items-center">
         <textarea
           id='textbox'
           rows="10" cols="100"
@@ -137,11 +168,11 @@ const myFunction =()=> {
           onChange={displaychange}
           style={{ fontStyle: font, fontSize: size }}
           placeholder="write something..."
-          className="notepad-display border-transparent shadow"
+          className="shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border border-slate-400 rounded-2xl resize-none m-4 mx-auto p-3 w-[96vw] md:h-[60vh] h-[62vh] text-lg focus:outline-none"
         ></textarea>
       </div>
-      <div className='border-groove-light to-do'>no of words - {notes.split(" ").filter((a) => a != 0).length} and no of characters - {notes.length}</div>
-    </>
+      <div className='md:text-base text-xs font-semibold bg-gradient-to-b from-white to-blue-300 px-10 w-full text-start'>words - {notes.split(" ").filter((a) => a != 0).length} and characters - {notes.length}</div>
+    </div>
 
   )
 }

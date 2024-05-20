@@ -3,95 +3,33 @@
   padding: 0;
 }
 
-.appnamediv {
-  background-color: #bdd6eb;
-  border: 1px groove #bdd6eb9a;
-  border-radius: 10px;
+.smooth-entry {
+  animation-name: entry;
+  animation-duration: 0.25s;
 }
 
-.appname {
-  width: 300px;
-  height: 90px;
+@keyframes entry {
+  0% {
+    opacity: 0;
+  }
 
-}
+  10% {
+    opacity: 0.1;
+  }
 
-ul {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
-}
+  50% {
+    opacity: 0.5;
+  }
 
-li {
-  list-style: none;
-}
-
-nav {
-  background-image: linear-gradient(45deg, #7fc4fd 0%, #b3e7e9 51%, #2bf1ff 100%);
-  border-radius: 10px;
-}
-
-nav ul li a {
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  margin: 0px;
-  padding: 14px 15px;
-  display: inline-block;
-  width: 100px;
-  height: 20px;
-  color: black;
-  list-style: none;
+  100% {
+    opacity: 1;
+  }
 }
 
 .active {
-  background-color: #a8e7e9;
-  border: 2px groove rgba(144, 219, 219, 0.295);
-  border-radius: 10px;
-}
-
-.box {
-  height: 200px;
-  width: 300px;
-  background-color: #9797fa;
-  margin: 50px;
-}
-
-.input-todo {
-  margin: 25px;
-  padding: 6px;
-  height: 40px;
-  width: 80vw;
-  background-color: #bde0fd;
-  font-size: larger;
-  line-height: 50px;
-}
-
-.flex-row-center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrap {
-  flex-wrap: wrap;
-}
-
-.flex-column-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.input-modal {
-  margin: 40px;
-  height: 50px;
-  width: 200px;
-  font-size: larger;
+  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
+  border-radius: 15px;
+  height: 3rem;
 }
 
 button {
@@ -99,15 +37,14 @@ button {
   font-weight: bold;
   color: #000333;
   height: 40px;
-  width: 100px;
+  width: 70px;
   margin: 5px;
   border-radius: 15px;
-  background-color: #5efdd5;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
 }
 
 button:active {
-  background-color: #2b998a;
+  background-color: #66ada4;
 }
 
 button:hover,
@@ -116,55 +53,49 @@ select:hover {
   transform: scale(1.05);
 }
 
-.todo-button {
-  height: 52px;
-  width: 60px;
-  background-color: #44eed7;
-  margin: 10px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.border-transparent {
-  border: 2px solid transparent;
-  border-radius: 10px;
-}
-
-.border-groove-light {
-  border: 2px groove rgba(168, 168, 247, 0.5);
-  border-radius: 10px;
-}
-
-.shadow {
+.select {
+  margin: 1px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  color: #000333;
   box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
+  width: 100px;
+  height: 40px;
 }
 
-.calculator {
-  background-color: #b4d7c6;
-  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
-  margin: 8px auto;
-  padding: 10px;
-  width: 390px;
+
+.to-do {
+  text-align: left;
+  padding-inline: 5px;
+  overflow-wrap: break-word;
 }
 
-.calcdisplay {
-  background-color: #ffffff;
-  text-align: right;
-  font-size: 50px;
-  font-weight: bold;
-  margin: 5px 5px 15px 2px;
-  width: 380px;
-  height: 83px;
+.deletetodo {
+  cursor: pointer;
+  border-radius: 100%;
+  color: red;
+  background-color: #f7efeffd;
+  border: 1px solid #000108;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  width: 25px;
+  padding: auto;
 }
 
-.calcbutton {
-  background-color: #60a2af;
-  font-size: 30px;
-  font-weight: bold;
-  width: 120px;
-  height: 47px;
+.todoCheck {
+  margin-inline: 8px;
+  outline: none;
+}
+
+.completedtodo {
+  color: grey;
+  text-decoration: line-through;
+  text-align: left;
+  padding-inline: 5px;
+  overflow-wrap: break-word;
 }
 
 .todo-display {
@@ -173,124 +104,32 @@ select:hover {
   margin: 17px;
   padding: 10px;
   width: 80vw;
-  height: 50vh;
+  min-height: 50vh;
   font-size: larger;
-}
-
-.notepad-display {
-  background-color: #d9dce7;
-  margin: 15px auto;
-  padding: 12px;
-  width: 96vw;
-  height: 50vh;
-  font-size: larger;
-}
-
-.btn-list {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.to-do {
-  text-align: left;
-  padding: 5px;
-  overflow-wrap: break-word;
-}
-
-.modal {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 32vh;
-  left: 25vw;
-  background-color: #a2eef8;
-  padding: 10px 50px 0px 0px;
-  box-shadow: 0px 20px 40px rgb(8 8 8);
-}
-
-.select {
-  margin: 1px;
-  padding: 5px;
-  font-size: 15px;
-  font-weight: 550;
-  color: #000333;
-  background-color: #5efdd5;
-  box-shadow: 0px 5px 5px rgba(13, 69, 77, 0.5);
-  width: 100px;
-  height: 40px;
-}
-
-.footer {
-  background-color: #93bebf;
-  text-align: center;
-  border: 1px solid rgb(22, 176, 187);
-  border-radius: 5px;
-}
-
-textarea {
-  resize: none;
-}
-
-.deletetodo {
-  cursor: pointer;
-  border-radius: 10px;
-  color: red;
-  background-color: #f7efeffd;
-  border: 1px solid #000108;
-  position: relative;
-  bottom: 30px;
-  left: 38vw;
 }
 
 .tododiv {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  position: relative;
   background-color: #83c4f8;
   border: 2px solid #39a6ff;
-  ;
+  padding: 1%;
+  padding-inline: 3%;
   border-radius: 10px;
   margin: 5px;
-}
-
-.dropdown {
-  display: none;
-}
-
-.dropbtn {
-  background-color: #34dbd3;
-  color: white;
-  margin: 15px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropbtn:hover,
-.dropbtn:focus {
-  background-color: #095252;
-}
-
-.mobile-content {
-  display: none;
 }
 
 /* clockcss */
 
 .clock-body {
-  font-family: 'Kanit', sans-serif;
-  background-image: url(https://source.unsplash.com/featured/1600x900);
   background-repeat: no-repeat;
-  height: 75vh;
 }
 
 .dial1 {
   background-color: #abb5b88e;
   border-radius: 10px;
-  width: 50vw;
-  padding-block: 3%;
 }
 
 .cursor {
@@ -311,20 +150,6 @@ textarea {
   padding-top: 20px;
 }
 
-#day {
-  font-size: 50px;
-  text-align: center;
-  width: 50vw;
-}
-
-#ghari {
-  font-size: 100px;
-  text-align: center;
-  font-weight: bold;
-  /* height: 140px; */
-  /* margin: 0 20px 0 20px; */
-}
-
 .clocksettingmenu {
   height: 75vh;
 }
@@ -334,14 +159,7 @@ textarea {
   background-color: #c2dfdf;
   height: 30px;
   width: 30px;
-}
-
-#AMPM {
-  font-size: 100px;
-  text-align: center;
-  font-weight: bold;
-  /* height: 140px; */
-  margin: 0 10px 0 10px;
+  margin-left: 20px;
 }
 
 .alarmtimebox {
@@ -377,9 +195,6 @@ textarea {
 /* weather/ */
 
 .weathersearch {
-  text-align: center;
-  margin: 10px;
-  padding: 6px;
   height: 40px;
   width: 50vw;
   background-color: #bde0fd;
@@ -396,7 +211,7 @@ textarea {
   color: #000108;
 }
 
-.weathererror{
+.weathererror {
   background-color: #b4dbee;
   height: 50vh;
   width: 50vw;
@@ -408,22 +223,12 @@ textarea {
 
 /* .dictionary */
 
-.dictionarycontainer {
-  background-color: #ebf1f093;
-  border: 1px solid #c7c7c7;
-  padding: 50px;
-  width: auto;
-  height: 60vh;
-}
-
 .dictionarybox {
   background-color: #a2f5dc93;
   border: 1px solid #1249ff52;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 50px;
-  width: 35vw;
-  height: 47vh;
   margin: 10px;
   margin-inline: 10px;
 }
@@ -450,8 +255,6 @@ textarea {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px;
-  width: 50vw;
-  height: 60vh;
   margin: 10px;
   margin-inline: 10px;
 }
@@ -480,7 +283,7 @@ textarea {
   margin: 10px;
   height: 40px;
   border-radius: 15px;
-  padding: 15px 15px;
+  padding: 10px 10px;
   text-align: center;
   color: white;
   border: 2px solid #44eed7;
@@ -495,7 +298,7 @@ textarea {
 
 /* currencyBox */
 
-.currencyBox{
+.currencyBox {
   margin: 30px;
   padding: 30px;
   background-color: #b4dbee;
@@ -505,109 +308,4 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media only screen and (max-width: 600px) {
-
-  .modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    top: 25vh;
-    left: 10%;
-    padding: 5px;
-  }
-
-  nav ul li a {
-    padding: 14px 15px;
-    width: 80px;
-    height: 20px;
-  }
-
-  ul {
-    justify-content: space-between;
-  }
-
-  .dropdown {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .mobile-content {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .btn-list {
-    display: none;
-  }
-
-  .notepad-display {
-    width: 85vw;
-  }
-
-  .calcbutton {
-    width: 100px;
-  }
-
-  .calculator {
-    width: 330px;
-  }
-
-  .calcdisplay {
-    width: 320px;
-  }
-
-  .input-todo {
-    width: 50vw;
-    margin: 15px;
-  }
-
-  .todo-button {
-    width: 50px;
-    margin: 5px;
-  }
-
-  /* clockcss */
-  #AMPM {
-    margin: 0 100px 0 120px;
-    font-size: 50px;
-    height: 75px;
-  }
-
-
-  #day {
-    font-weight: bold;
-    width: 95vw;
-  }
-
-  .select {
-    width: 345px;
-  }
-
-  .button {
-    margin-left: 80px;
-  }
-
-  .clock-body {
-    background-image: url(https://source.unsplash.com/featured/700x1600);
-  }
-
-  #ghari {
-    font-size: 88px;
-    margin: 0px;
-  }
-
-  .dial1 {
-    width: 95vw;
-    margin: 10px;
-  }
 }
