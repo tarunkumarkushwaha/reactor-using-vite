@@ -56,19 +56,27 @@ const Tools = () => {
     let result = ""
     if (activeFunction.inputs[0] == "string") {
       result = await activeFunction.function(functionInput1)
-      // if (typeof result == "boolean" && result == true) {
-      //   result = "yes"
-      // }else{result = "no"}
-      // console.log(result,"nochange ",typeof result)
+      if (typeof result == "boolean" && result == true) {
+        result = "yes"
+      } else if (typeof result == "boolean" && result == false) { result = "no" }
     }
     else if (activeFunction.inputs[0] == "number") {
       result = await activeFunction.function(parseInt(functionInput1))
+      if (typeof result == "boolean" && result == true) {
+        result = "yes"
+      } else if (typeof result == "boolean" && result == false) { result = "no" }
     }
     else if (activeFunction.inputs[0] == "num array") {
-      result = await activeFunction.function(functionInput1.split(',').map((item=>parseInt(item))))
+      result = await activeFunction.function(functionInput1.split(',').map((item => parseInt(item))))
+      if (typeof result == "boolean" && result == true) {
+        result = "yes"
+      } else if (typeof result == "boolean" && result == false) { result = "no" }
     }
     else if (activeFunction.inputs.length == 2) {
-      result = await activeFunction.function(functionInput1,functionInput2)
+      result = await activeFunction.function(functionInput1, functionInput2)
+      if (typeof result == "boolean" && result == true) {
+        result = "yes"
+      } else if (typeof result == "boolean" && result == false) { result = "no" }
     }
     else { result = "function under construction" }
     setoutput(result)
