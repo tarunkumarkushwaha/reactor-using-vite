@@ -120,7 +120,7 @@ const AlarmClock = () => {
                         <div className="md:text-[100px] text-4xl text-center font-bold">{time}</div>
                         <div className="md:text-[100px] text-4xl text-center font-bold mx-[10px]">{ampm}</div>
                     </div>
-                    <div className="md:text-[50px] text-2xl text-center md:w-[50vw] w-[70vw]">{date}</div>
+                    <div className="md:text-[50px] text-2xl p-4 text-center md:w-[50vw] w-[70vw]">{date}</div>
                 </div>
             </div>}
             {/* Modal  */}

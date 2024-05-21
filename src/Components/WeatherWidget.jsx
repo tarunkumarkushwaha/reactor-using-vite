@@ -63,7 +63,7 @@ const WeatherWidget = () => {
           onChange={displaychange}
           onKeyDown={onEnterPress}
           placeholder="enter location"
-          className="focus:outline-none rounded-xl p-4 border border-slate-400 shadow weathersearch"
+          className="focus:outline-none rounded-xl p-4 border border-slate-400 weathersearch shadow-[0px_5px_5px_rgba(13,69,77,0.5)]"
         ></input>
         <div className="rounded-xl border p-5 m-5 bg-white shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border-slate-500 flex flex-col justify-center items-center">
           

@@ -81,7 +81,7 @@ const ImageSearch = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-blue-300 p-8 smooth-entry">
       <div className="flex flex-col items-center gap-3">
-        <h1 className="rounded-lg text-white italic shadow-lg text-center font-display text-4xl bg-gradient-to-r from-blue-500 via-yellow-400 to-green-500 p-4">
+        <h1 className="rounded-lg text-white shadow-[0px_5px_5px_rgba(13,69,77,0.5)] italic text-center font-display text-4xl bg-gradient-to-r from-blue-500 via-yellow-400 to-green-500 p-4">
           FunPhoto
         </h1>
         <div className="box bg-white rounded-lg border border-gray-400 p-8 py-10 md:w-[50vw] w-[90vw] shadow-[0px_5px_5px_rgba(13,69,77,0.5)]">

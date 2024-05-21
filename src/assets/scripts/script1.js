@@ -5,11 +5,46 @@ let word = "rationalIsation"
 let numarr = [1, 1, 2, 5, 3, 4, 9, 6, 1, 0, 7, 8, 9, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -5]
 let numarr2 = [1, 2, 4, 8, 1, 2, 2]
 let numarr3 = [10, 20, 30, 40]
-let emobj ={}
-let obj ={ram:123,shyam:123,rama:12233}
-let objarray = [ [ 'ram', 123 ], [ 'shyam', 123 ], [ 'rama', 12233 ] ]
+let emobj = {}
+let obj = { ram: 123, shyam: 123, rama: 12233 }
+let objarray = [['ram', 123], ['shyam', 123], ['rama', 12233]]
 
-//please include any new function in function array last included was hexcolgen
+//please include any new function in function array last included was agecalculator
+
+const agecalculator = (bday) => {
+  let startdate = new Date(bday.split("-").reverse().join("-"))
+  let currentdate = new Date()
+  let timeDifference = currentdate - startdate;
+
+  if (isNaN(startdate)) {
+    alert("dates are invalid")
+  }
+  let daysDifference = timeDifference / (1000 * 60 * 60 * 24 * 365);
+  return Math.floor(daysDifference)
+}
+
+// console.log(agecalculator("28-10-1992"))
+
+const daysBetweenDates = (day1, day2) => {
+  let startdate = new Date(day1.split("-").reverse().join("-"))
+  let enddate = new Date(day2.split("-").reverse().join("-"))
+  let timeDifference = enddate - startdate;
+
+  if (isNaN(startdate) || isNaN(enddate)) {
+    alert("dates are invalid")
+  }
+  let daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+  return daysDifference
+}
+
+// console.log(daysBetweenDates("12-12-2023", "15-12-2023")) 
+
+const simpleintrestcalculator = (numarray) => {
+  console.log(numarray[0], numarray[1], numarray[2])
+  return (numarray[0] * numarray[1] * numarray[2]) / 100
+}
+
+// console.log(simpleintrestcalculator([10,23,10]))
 
 const checkPalindrome = (str) => {
   if (!str || str.length <= 0) { return false }
@@ -20,7 +55,7 @@ const checkPalindrome = (str) => {
 
 // console.log(checkPalindrome(str))
 
-const arrayToObject = (arr) =>{
+const arrayToObject = (arr) => {
   // let outputobj = {}
   // arr.forEach((item)=>{outputobj[item[0]] = item[1]})
   // return outputobj
@@ -29,7 +64,7 @@ const arrayToObject = (arr) =>{
 
 // console.log(arrayToObject(objarray))
 
-const objectToarray = (object) =>{
+const objectToarray = (object) => {
   // let key = Object.keys(object)
   // let values = Object.values(object)
   // return values.map((value,i)=>{return [key[i],value]})
@@ -38,7 +73,7 @@ const objectToarray = (object) =>{
 
 // console.log(objectToarray(obj))
 
-const emptyObjetDetector = (object) =>{
+const emptyObjetDetector = (object) => {
   let keyarr = []
   for (const key in object) {
     keyarr.push(key)
@@ -49,10 +84,10 @@ const emptyObjetDetector = (object) =>{
 
 // console.log(emptyObjetDetector(emobj))
 
-const hexcolgen = () =>{
+const hexcolgen = () => {
   let color = "#"
-  for(let i = 0; i<6; i++){
-    color += Math.floor(Math.random()*16).toString(16)
+  for (let i = 0; i < 6; i++) {
+    color += Math.floor(Math.random() * 16).toString(16)
   }
   return color
 }
@@ -405,117 +440,139 @@ const longestWordCheck = (str) => {
 
 const functionarray = [
   {
+    name: "simple intrest calculator",
+    inputs: ["num array"],
+    function: simpleintrestcalculator,
+    description: "Calculates the simple interest given the principal, rate, and time."
+  },
+  {
     name: "hashgenerator",
     inputs: ["string"],
-    function: hashgenerator
+    function: hashgenerator,
+    description: "Generates a hash value for the given string."
   },
   {
     name: "check Palindrome",
     inputs: ["string"],
-    function: checkPalindrome
+    function: checkPalindrome,
+    description: "Checks if the given string is a palindrome."
   },
   {
     name: "longest Word finder",
     inputs: ["string"],
-    function: longestWordCheck
+    function: longestWordCheck,
+    description: "Finds the longest word in the given string."
   },
+  {
+    name: "Days Between Dates",
+    inputs: ["start date", "end date"],
+    function: daysBetweenDates,
+    description: "Finds days past between given dates in format DD-MM-YYYY"
+  },
+  {
+    name: "Age calculator",
+    inputs: ["string"],
+    function: agecalculator,
+    description: "Finds age given birth date in format DD-MM-YYYY"
+  },
+  // {
+  //   name: "",
+  //   inputs: [""],
+  //   function: ,
+  //   description: ""
+  // },
   {
     name: "occurance of word",
     inputs: ["sentance", "word"],
-    function: occuranceword
+    function: occuranceword,
+    description: "Finds the number of occurrences of a word in a sentence."
   },
   {
     name: "random color generator",
     inputs: ["string"],
-    function: hexcolgen
-  }
-  ,
-  // {
-  //   name: "number repetation Check",
-  //   inputs: ["num array"],
-  //   function: repetationCheck
-  // },
+    function: hexcolgen,
+    description: "Generates a random hex color code."
+  },
+  {
+    name: "number repetation Check",
+    inputs: ["number"],
+    function: repetationCheck,
+    description: "Checks for repetitions of a number in a given array."
+  },
   {
     name: "median Calculator",
     inputs: ["num array"],
-    function: medianCalculator
+    function: medianCalculator,
+    description: "Calculates the median of an array of numbers."
   },
   {
     name: "mean Calculator",
     inputs: ["num array"],
-    function: meanCalculator
+    function: meanCalculator,
+    description: "Calculates the mean of an array of numbers."
   },
   {
     name: "string Reverser",
     inputs: ["string"],
-    function: stringReverser
+    function: stringReverser,
+    description: "Reverses the given string."
   },
-  // {
-  //   name: "IsUpperCaseOrLOwerCase check",
-  //   inputs: ["string"],
-  //   function: IsUpperCaseOrLOwerCase
-  // },
   {
     name: "convert To CamelCase",
     inputs: ["string"],
-    function: convertToCamelCase
+    function: convertToCamelCase,
+    description: "Converts the given string to camelCase."
   },
   {
     name: "Nth Fibonacci no",
     inputs: ["number"],
-    function: FibonacciCalculator
+    function: FibonacciCalculator,
+    description: "Calculates the Nth Fibonacci number."
   },
   {
     name: "sum of Square numbers",
     inputs: ["num array"],
-    function: sumSquareAllArrayElements
+    function: sumSquareAllArrayElements,
+    description: "Calculates the sum of squares of all elements in the array."
   },
-  // {
-  //   name: "is power of 2 check",
-  //   inputs: ["number"],
-  //   function: ispowerof2
-  // },
   {
     name: "check no of vowel",
     inputs: ["string"],
-    function: vowelcheck
+    function: vowelcheck,
+    description: "Counts the number of vowels in the given string."
   },
   {
     name: "sum of digits",
     inputs: ["number"],
-    function: sumofd
+    function: sumofd,
+    description: "Calculates the sum of the digits of the given number."
   },
-  // {
-  //   name: "Equality Check",
-  //   inputs: ["two array"],
-  //   function: arrayEqualityCheck
-  // },
   {
     name: "factorial Calculator",
     inputs: ["number"],
-    function: factorialCalculator
+    function: factorialCalculator,
+    description: "Calculates the factorial of the given number."
   },
   {
     name: "check Max number",
     inputs: ["num array"],
-    function: checkMax
+    function: checkMax,
+    description: "Finds the maximum number in the array."
   },
   {
     name: "check Min number",
     inputs: ["num array"],
-    function: checkMin
+    function: checkMin,
+    description: "Finds the minimum number in the array."
   },
   {
     name: "check Triangle Type",
     inputs: ["num array"],
-    function: checkTriangleType
-  },
-  // {
-  //   name: "occurance of letter",
-  //   inputs: ["two array"],
-  //   function: occuranceletter
-  // },
+    function: checkTriangleType,
+    description: "Determines the type of triangle given the lengths of its sides."
+  }
 ];
+
 
 
 export default functionarray

@@ -11,6 +11,18 @@ const Tools = () => {
 
   const inputRef = useRef(null);
 
+  const bargraphGenerator = (array, maxValue) => {
+    const numarray = array.split(',').map(item => parseInt(item))
+    return <div className="flex justify-center items-center">
+      {numarray.map((value,i) => {
+        return <div key={i} className="relative w-20 bg-gray-200 h-64 p-4  flex items-end">
+          <div className="bg-sky-600 w-full rounded-md" style={{ height: `${(value / maxValue) * 100}%` }}></div>
+          <span className="mt-2 text-sm border-b-2 border-blue-800">{value}</span>
+        </div>
+      })}
+    </div>
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -42,9 +54,16 @@ const Tools = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const filteredOptions = functionarray.filter(option =>
+  const bargraphobj = {
+      name: "bargraph Generator",
+      inputs: ["array of data", "max value"],
+      function: bargraphGenerator,
+      description: "Generates bargraph given maxvalue and data seperated by , "
+    }
+
+  const filteredOptions = [bargraphobj, ...functionarray.filter(option =>
     option.name.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  )]
 
   const handleOptionClick = (options) => {
     setactiveFunction(options)
@@ -84,14 +103,14 @@ const Tools = () => {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-b from-white to-blue-300 w-full smooth-entry">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-300 w-full smooth-entry">
       <div className="relative p-5 flex justify-center items-center" ref={inputRef}>
-        <div className="flex w-80 border border-gray-300 rounded-md">
+        <div className="flex w-80 border border-gray-300 rounded-md shadow-[0px_5px_5px_rgba(13,69,77,0.5)]">
           <input
             type="text"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="search tools like..."
+            placeholder="simple intrest calculator"
             className="w-full px-4 py-2 focus:outline-none rounded-md focus:border-none"
           />
           <div
@@ -122,7 +141,7 @@ const Tools = () => {
             value={functionInput1}
             onChange={handleFunctionInputChange1}
             placeholder={activeFunction.inputs[0]}
-            className="w-full px-4 py-2 rounded-md border border-blue-950 focus:border-blue-400 focus:outline-none"
+            className="w-full px-4 py-2 rounded-md border shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border-blue-950 focus:border-blue-400 focus:outline-none"
           />
           {activeFunction.inputs.length == 2 &&
             <input
@@ -130,14 +149,20 @@ const Tools = () => {
               value={functionInput2}
               onChange={handleFunctionInputChange2}
               placeholder={activeFunction.inputs[1]}
-              className="w-full px-4 py-2 rounded-md border border-blue-950 focus:border-blue-400 focus:outline-none"
+              className="w-full px-4 py-2 rounded-md border shadow-[0px_5px_5px_rgba(13,69,77,0.5)] border-blue-950 focus:border-blue-400 focus:outline-none"
             />
+
           }
+
         </div>
-        <button onClick={functionHandler} className='bg-white'>Execute</button>
-        <div>
-          output is {output}
+        <div className="px-4 py-2 m-4">
+          {activeFunction.description}
         </div>
+        <button onClick={functionHandler} className='bg-white m-4'>Execute</button>
+        <div className='text-2xl m-4'>
+          output is 
+        </div>
+        <div className='font-bold text-2xl rounded-md'>{output}</div>
       </div>
 
     </div>

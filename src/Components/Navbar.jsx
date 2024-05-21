@@ -51,9 +51,9 @@ const Navbar = () => {
               <li className="list-none">
                 <NavLink to={"/AlarmClock"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">AlarmClock</NavLink>
               </li>
-              {/* <li className="list-none">
+              <li className="list-none">
               <NavLink to={"/currencyconverter"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Currency</NavLink>
-            </li> */}
+            </li>
               <li className="list-none">
                 <NavLink to={"/weather"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Weather</NavLink>
               </li>

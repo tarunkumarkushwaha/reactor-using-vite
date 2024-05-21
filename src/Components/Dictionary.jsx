@@ -53,7 +53,7 @@ const Dictionary = () => {
                         onChange={displaychange}
                         onKeyDown={onEnterPress}
                         placeholder="enter word"
-                        className="focus:outline-none w-full max-w-96 bg-white shadow wordsearch"
+                        className="focus:outline-none w-full max-w-96 bg-white wordsearch shadow-[0px_5px_5px_rgba(13,69,77,0.5)]"
                     ></input>
                     <div className="flex md:flex-row flex-col justify-center items-center wrap">
                         <button className="m-3 bg-slate-100" onClick={searchWord}>Search</button>
