@@ -7,6 +7,7 @@ import ContentCutIcon from '@mui/icons-material/ContentCut';
 import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import PrintIcon from '@mui/icons-material/Print';
 import DownloadIcon from '@mui/icons-material/Download';
+import UseAnimation from '../../customhooks/TarunAnimation';
 
 function Notepad() {
 
@@ -159,7 +160,13 @@ function Notepad() {
           <DownloadIcon />
         </button>
       </div>
-      {select && <Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} />}
+      <UseAnimation
+        Component={<Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} />}
+        duration={150}
+        isshowComponent={select}
+        mountAnimationclass={"smooth-entry"}
+        unmountAnimationclass={"smooth-exit"}
+      />
       <div className="flex justify-center items-center">
         <textarea
           id='textbox'

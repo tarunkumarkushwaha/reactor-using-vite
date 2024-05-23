@@ -8,13 +8,14 @@
   animation-duration: 0.25s;
 }
 
+.smooth-exit {
+  animation-name: exit;
+  animation-duration: 0.25s;
+}
+
 @keyframes entry {
   0% {
     opacity: 0;
-  }
-
-  10% {
-    opacity: 0.1;
   }
 
   50% {
@@ -23,6 +24,20 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
