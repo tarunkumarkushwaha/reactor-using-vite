@@ -45,7 +45,7 @@ const Dictionary = () => {
     return (
         <>
             <audio src={SRCsound} loop={false} ref={currentsong} crossOrigin={'anonymous'}></audio>
-            <div className="smooth-entry h-[80vh] flex flex-col justify-center items-center md:mt-0 mt-28">
+            <div className="smooth-entry bg-gradient-to-b h-[80vh] from-white to-blue-300 flex flex-col justify-center items-center md:mt-0 mt-28">
                 <div className="dictionarybox flex md:flex-row flex-col justify-center items-center">
                     <input
                         type="text"
