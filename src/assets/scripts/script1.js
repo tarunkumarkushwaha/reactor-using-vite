@@ -3,13 +3,42 @@ let parstr = "raceCar"
 let password = "facebookiaPassword@"
 let word = "rationalIsation"
 let numarr = [1, 1, 2, 5, 3, 4, 9, 6, 1, 0, 7, 8, 9, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -5]
-let numarr2 = [1, 2, 4, 8, 1, 2, 2]
+let numarr2 = [1, 2, 4, 8, 1, 2, 3]
 let numarr3 = [10, 20, 30, 40]
 let emobj = {}
 let obj = { ram: 123, shyam: 123, rama: 12233 }
 let objarray = [['ram', 123], ['shyam', 123], ['rama', 12233]]
 
 //please include any new function in function array last included was agecalculator
+// console.log(7 % 3)
+
+const numberextractor = (string) => {
+ return string
+}
+
+console.log(numberextractor("23ksk123ws"))
+
+const fizbuzz = (num1, num2) => {
+  let array = new Array
+  for (let index = num1; index <= num2; index++) {
+    array.push(index)
+  }
+
+  return array.map((item) => {
+    if (item % 3 == 0 && item % 5 == 0) {
+      return `fizbuzz${item}`
+    }
+    else if (item % 3 == 0) {
+      return `fiz${item}`
+    }
+    else if (item % 5 == 0) {
+      return `buzz${item}`
+    }
+    else { return item }
+  })
+}
+
+// console.log(fizbuzz(12,30))
 
 const agecalculator = (bday) => {
   let startdate = new Date(bday.split("-").reverse().join("-"))
@@ -208,7 +237,7 @@ const repetationCheck = (array) => {
   return output
 }
 
-// console.log(repetationCheck(numarr2))
+console.log(repetationCheck(numarr2))
 
 const medianCalculator = (numarray) => {
   let median = 0
