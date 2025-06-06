@@ -8,23 +8,101 @@ import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import PrintIcon from '@mui/icons-material/Print';
 import DownloadIcon from '@mui/icons-material/Download';
 import UseAnimation from '../../customhooks/TarunAnimation';
+import Tabs from './Tabs';
+import AddTabModal from './addTabModal';
 
 function Notepad() {
 
   // states 
-  const [notes, setNotes] = useState(localStorage.getItem("key") ? localStorage.getItem("key") : "")
-  const [select, setSelect] = useState(false)
-  const [prevword, setPrevword] = useState("")
-  const [newword, setNewword] = useState("")
-  const [font, setFont] = useState("normal")
-  const [size, setSize] = useState("larger")
-  const [mobilenav, setmobilenav] = useState(false)
+  const [notes, setNotes] = useState("");
+  const [select, setSelect] = useState(false);
+  const [showAddTabModal, setShowAddTabModal] = useState(false);
+  const [tabTitle, setTabTitle] = useState("Tab");
+  const [prevword, setPrevword] = useState("");
+  const [newword, setNewword] = useState("");
+  const [font, setFont] = useState("normal");
+  const [size, setSize] = useState("larger");
+  const [mobilenav, setmobilenav] = useState(false);
+  const [showtab, setshowtab] = useState(false);
+  const [tab, settab] = useState([{ sno: 1, data: "", title: "" }]);
+  const [activeTab, setactiveTab] = useState(1);
 
-  // displaychange handler 
+
+  useEffect(() => {
+    localStorage.setItem("tab", JSON.stringify(tab));
+  }, [tab]);
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
+
+  const removeTab = (sno) => {
+    const updatedTabs = tab.filter(t => t.sno !== sno);
+    settab(updatedTabs);
+    const newActive = updatedTabs.length ? updatedTabs[0].sno : 1;
+    setactiveTab(newActive);
+    const activeData = updatedTabs.find(t => t.sno === newActive);
+    setNotes(activeData?.data || "");
+  };
+
+  const ontabClick = (sno) => {
+    const clicked = tab.find(t => t.sno === sno);
+    if (clicked) {
+      setactiveTab(sno);
+      setNotes(clicked.data);
+    }
+  };
+
   const displaychange = (e) => {
-    setNotes(e.target.value)
-    localStorage.setItem("key", e.target.value)
-  }
+    const value = e.target.value;
+    const updatedTabs = tab.map(item =>
+      item.sno === activeTab ? { ...item, data: value } : item
+    );
+    settab(updatedTabs);
+    setNotes(value);
+  };
+
+  const closeAllTabs = () => {
+    const defaultTab = [{ sno: 1, data: "", title: "" }];
+    settab(defaultTab);
+    setactiveTab(1);
+    setNotes("");
+  };
+
+  const openAddTabModal = () => {
+    setTabTitle("");
+    setShowAddTabModal(true);
+  };
+
+  const confirmAddTab = () => {
+    if (!tabTitle.trim()) {
+      alert("Please enter a title.");
+      return;
+    }
+    const newSno = tab.length ? tab[tab.length - 1].sno + 1 : 1;
+    const newTab = { sno: newSno, data: "", title: tabTitle.trim() };
+    const updatedTabs = [...tab, newTab];
+    settab(updatedTabs);
+    setactiveTab(newSno);
+    setNotes("");
+    setShowAddTabModal(false);
+  };
+
+
+  useEffect(() => {
+    const savedTabs = JSON.parse(localStorage.getItem("tab")) || [{ sno: 1, data: "" }];
+    const savedActiveTab = parseInt(localStorage.getItem("activeTab")) || 1;
+
+    // if (savedTabs.length > 0) {
+    settab(savedTabs);
+    // }
+    setactiveTab(savedActiveTab);
+
+    const activeTabData = savedTabs.find(t => t.sno === savedActiveTab);
+    if (activeTabData) {
+      setNotes(activeTabData.data);
+    }
+  }, []);
 
   //  click handlers
   const upclick = () => {
@@ -117,38 +195,41 @@ function Notepad() {
         <button onClick={myFunction} className=" text-center border-transparent">Menu</button>
       </div>
       <div style={{ display: mobilenav ? 'none' : 'flex' }} className={`hidden md:flex md:mt-1 flex-wrap gap-2 justify-center items-center`} >
-        <button className="text-center border-transparent" onClick={capital1st}>
+        <button title='capitalise' className="text-center border-transparent" onClick={capital1st}>
           Aa
         </button>
-        <button className="text-center border-transparent" onClick={upclick}>
+        <button title='all capitals' className="text-center border-transparent" onClick={upclick}>
           AA
         </button>
-        <button className="text-center border-transparent" onClick={downclick}>
+        <button title='all small' className="text-center border-transparent" onClick={downclick}>
           aa
         </button>
-        <button className="text-center border-transparent" onClick={eraseall}>
+        <button title='delete all' className="text-center border-transparent" onClick={eraseall}>
           <DeleteIcon />
         </button>
-        <button className="text-center border-transparent" onClick={cut}>
+        {/* <button title='cut' className="text-center border-transparent" onClick={cut}>
           <ContentCutIcon />
-        </button>
-        <button className="text-center border-transparent" onClick={copy}>
+        </button> */}
+        <button title='copy' className="text-center border-transparent" onClick={copy}>
           <ContentCopyIcon />
         </button>
-        <button className="text-center border-transparent" onClick={paste}>
+        <button title='paste' className="text-center border-transparent" onClick={paste}>
           <ContentPasteGoIcon />
         </button>
-        <button className="text-center border-transparent" onClick={replace}>
+        <button title='replace' className="text-center border-transparent" onClick={replace}>
           <PublishedWithChangesIcon />
         </button>
-        <button className="text-center border-transparent" onClick={() => window.print()}>
+        <button title='print screen' className="text-center border-transparent" onClick={() => window.print()}>
           <PrintIcon />
         </button>
-        <select id="cards" onChange={fontstylecng} className='select rounded-2xl focus:outline-none border-transparent'>
+        <button title='replace' className="text-center w-16 font-bold border-transparent" onClick={() => setshowtab(!showtab)}>
+          Tabs
+        </button>
+        <select title='style' id="cards" onChange={fontstylecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="normal">normal</option>
           <option value="italic">Italic</option>
         </select>
-        <select id="cards2" onChange={fontsizecng} className='select rounded-2xl focus:outline-none border-transparent'>
+        <select title='font size' id="cards2" onChange={fontsizecng} className='select rounded-2xl focus:outline-none border-transparent'>
           <option value="larger">Size</option>
           <option value="larger">normal</option>
           <option value="medium">very small</option>
@@ -156,7 +237,7 @@ function Notepad() {
           <option value="x-large">large</option>
           <option value="xx-large">larger</option>
         </select>
-        <button className="text-center border-transparent" onClick={requestTarunToDownload}>
+        <button title='download' className="text-center border-transparent" onClick={requestTarunToDownload}>
           <DownloadIcon />
         </button>
       </div>
@@ -167,6 +248,26 @@ function Notepad() {
         mountAnimationclass={"smooth-entry"}
         unmountAnimationclass={"smooth-exit"}
       />
+      <UseAnimation
+        Component={<AddTabModal
+          tabTitle={tabTitle}
+          setTabTitle={setTabTitle}
+          onConfirm={confirmAddTab}
+          onClose={() => setShowAddTabModal(false)}
+        />}
+        duration={150}
+        isshowComponent={showAddTabModal}
+        mountAnimationclass={"smooth-entry"}
+        unmountAnimationclass={"smooth-exit"}
+      />
+
+      {showtab && <div className="flex justify-center items-center pt-5 gap-2">
+        {tab.map((item) => (
+          <Tabs key={item.sno} tab={tab} activeTab={activeTab} ontabClick={ontabClick} removeTab={removeTab} data={item} />
+        ))}
+        <button className='p-2 w-10 font-bold' onClick={openAddTabModal}>+</button>
+        <button className='p-2 w-20' onClick={closeAllTabs}>close all</button>
+      </div>}
       <div className="flex justify-center items-center">
         <textarea
           id='textbox'
