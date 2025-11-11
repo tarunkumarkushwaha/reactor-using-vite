@@ -15,6 +15,7 @@ import WeatherWidget from "./Components/WeatherWidget";
 import Dictionary from "./Components/Dictionary";
 import Navbar from "./Components/Navbar";
 import ImageSearch from "./Components/ImageSearch";
+import GroceryList from "./Components/GroceryList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<><Navbar /><Notepad /></>} />
+          <Route path="/grocerylist" element={<><Navbar /><GroceryList/></>} />
           <Route path="/calculator" element={<><Navbar /><Calculator /></>} />
           <Route path="/todo" element={<><Navbar /><Todo /></>} />
           <Route path="/imagesearch" element={<><Navbar /><ImageSearch/></>} />
