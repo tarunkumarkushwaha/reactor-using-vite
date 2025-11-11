@@ -48,9 +48,9 @@ const GroceryList = () => {
         { name: "Tea leaf", price: 25, value: "kg", quantity: 1 / 10, checked: true },
     ];
     const [items, setItems] = useState(() => {
-    const saved = localStorage.getItem("groceryItems");
-    return saved ? JSON.parse(saved) : defaultItems;
-  });
+        const saved = localStorage.getItem("groceryItems");
+        return saved ? JSON.parse(saved) : defaultItems;
+    });
 
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState("");
@@ -101,31 +101,34 @@ const GroceryList = () => {
     };
 
     return (
-        <div className="min-h-screen bg-linear-to-br from-green-100 to-lime-200 p-6 flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-6 text-green-800">Grocery Checklist</h1>
+        <div className="min-h-screen bg-gradient-to-br from-green-100 to-lime-200 p-4 sm:p-6 flex flex-col items-center">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-green-800 text-center">
+                Grocery Checklist
+            </h1>
 
-            <div className="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-6">
+            <div className="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-4 sm:p-6">
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className={`flex items-center justify-between px-6 border-b py-2 rounded-lg hover:bg-green-50 transition ${!item.checked ? "opacity-100" : "opacity-60"
+                        className={`flex items-center justify-between gap-2 sm:gap-4 border-b py-3 px-3 sm:px-6 rounded-lg hover:bg-green-50 transition ${!item.checked ? "opacity-100" : "opacity-60"
                             }`}
                     >
-                        <div className="flex items-center gap-3 w-full">
+                        {/* Left side — checkbox and name */}
+                        <div className="flex items-start gap-3 flex-1 min-w-0">
                             <input
                                 type="checkbox"
                                 checked={item.checked}
                                 onChange={() => toggleCheck(index)}
-                                className="w-5 h-5 accent-green-600"
+                                className="w-5 h-5 mt-1 flex-shrink-0 accent-green-600"
                             />
 
                             {editIndex === index ? (
-                                <div className="flex gap-2 w-full">
+                                <div className="flex flex-wrap gap-2 w-full">
                                     <input
                                         type="text"
                                         value={editName}
                                         onChange={(e) => setEditName(e.target.value)}
-                                        className="border rounded px-2 py-1 w-full"
+                                        className="border rounded px-2 py-1 w-full sm:w-auto flex-1 min-w-[120px]"
                                     />
                                     <input
                                         type="text"
@@ -153,40 +156,45 @@ const GroceryList = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <>
-                                    <span
-                                        onClick={() => handleEdit(index)}
-                                        className={`flex-1 cursor-pointer ${!item.checked
-                                                ? "text-gray-900 font-semibold"
-                                                : "line-through text-gray-500"
-                                            }`}
-                                    >
-                                        {item.name}
-                                    </span>
-                                    <span
-                                        onClick={() => handleEdit(index)}
-                                        className="flex-1 cursor-pointer text-gray-700"
-                                    >
-                                        {formatQuantity(item.quantity, item.value)}
-                                    </span>
-                                    <span
-                                        onClick={() => handleEdit(index)}
-                                        className="cursor-pointer font-semibold text-green-700"
-                                    >
-                                        ₹{item.price}
-                                    </span>
-                                </>
+                                <span
+                                    onClick={() => handleEdit(index)}
+                                    className={`flex-1 cursor-pointer break-words leading-snug ${!item.checked
+                                            ? "text-gray-900 font-semibold"
+                                            : "line-through text-gray-500"
+                                        }`}
+                                >
+                                    {item.name}
+                                </span>
                             )}
                         </div>
+
+                        {/* Right side — quantity and price */}
+                        {editIndex !== index && (
+                            <div className="flex items-center gap-3 flex-shrink-0 text-sm sm:text-base">
+                                <span
+                                    onClick={() => handleEdit(index)}
+                                    className="cursor-pointer text-gray-700 whitespace-nowrap"
+                                >
+                                    {formatQuantity(item.quantity, item.value)}
+                                </span>
+                                <span
+                                    onClick={() => handleEdit(index)}
+                                    className="cursor-pointer font-semibold text-green-700 whitespace-nowrap"
+                                >
+                                    ₹{item.price}
+                                </span>
+                            </div>
+                        )}
                     </div>
                 ))}
 
-                <div className="flex justify-between items-center mt-6 text-xl font-bold text-green-800">
+                <div className="flex justify-between items-center mt-6 text-lg sm:text-xl font-bold text-green-800">
                     <span>Total (checked)</span>
                     <span>₹{total}</span>
                 </div>
             </div>
         </div>
+
     );
 };
 
