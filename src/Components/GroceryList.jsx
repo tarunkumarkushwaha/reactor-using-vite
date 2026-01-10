@@ -53,13 +53,13 @@ const GroceryList = () => {
         { name: "Surf", price: 10, value: "piece", quantity: 1, checked: false },
         { name: "Shampoo", price: 10, value: "piece", quantity: 5, checked: true },
         { name: "Toothbrush", price: 40, value: "piece", quantity: 1, checked: true },
-        { name: "Paneer", price: 170, value: "kg", quantity: 1/5, checked: true },
-        { name: "Ghee", price: 150, value: "piece", quantity: 1/5, checked: true },
+        { name: "Paneer", price: 170, value: "kg", quantity: 1 / 5, checked: true },
+        { name: "Ghee", price: 150, value: "piece", quantity: 1 / 5, checked: true },
         { name: "Long", price: 20, value: "pack", quantity: 1, checked: true },
         { name: "Adrak", price: 20, value: "kg", quantity: 1 / 4, checked: true },
         { name: "Chana dal 500gm", price: 35, value: "kg", quantity: 0.5, checked: true },
         { name: "Subz", price: 100, value: "kg", quantity: 1, checked: false },
-        { name: "Tomatoes", price: 25, value: "kg", quantity: 1/4, checked: false },
+        { name: "Tomatoes", price: 25, value: "kg", quantity: 1 / 4, checked: false },
         { name: "Mango raw", price: 40, value: "kg", quantity: 1, checked: true },
         { name: "Harpic cleaner", price: 45, value: "piece", quantity: 1, checked: true },
         { name: "Aloo", price: 50, value: "kg", quantity: 5, checked: true },
@@ -76,8 +76,8 @@ const GroceryList = () => {
         { name: "Deodorant", price: 150, value: "piece", quantity: 1, checked: true },
         { name: "Belt", price: 80, value: "piece", quantity: 1, checked: true },
         { name: "Onion", price: 50, value: "kg", quantity: 5, checked: true },
-        { name: "GumT", price: 20, value: "piece", quantity: 1, checked: false },
-        { name: "Rest money", price: 60, value: "misc", quantity: 1, checked: true }
+        { name: "GumT", price: -20, value: "piece", quantity: 1, checked: false },
+        { name: "Rest money", price: -60, value: "misc", quantity: 1, checked: true }
     ];
     const [items, setItems] = useState(() => {
         const saved = localStorage.getItem("groceryItems");
@@ -110,13 +110,32 @@ const GroceryList = () => {
 
     const handleSave = (index) => {
         const updated = [...items];
-        updated[index].name = editName;
-        updated[index].price = Number(editPrice) || 0;
-        updated[index].quantity = Number(editQuantity) || 0;
-        updated[index].value = editValue;
+
+        const qty = Number(editQuantity);
+        const price = Number(editPrice);
+
+        if (Number.isNaN(qty)) {
+            alert("Quantity must be a number");
+            return;
+        }
+
+        if (Number.isNaN(price)) {
+            alert("Price must be a number");
+            return;
+        }
+
+        updated[index] = {
+            ...updated[index],
+            name: editName.trim(),
+            price,
+            quantity: qty, 
+            value: editValue,
+        };
+
         setItems(updated);
         setEditIndex(null);
     };
+
 
     const total = items
         .filter((item) => !item.checked)
