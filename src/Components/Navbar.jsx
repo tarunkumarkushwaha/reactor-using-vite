@@ -48,11 +48,14 @@ const Navbar = () => {
               <li className="list-none">
                 <NavLink to={"/calculator"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Calculator</NavLink>
               </li>
-              <li className="list-none">
+              {/* <li className="list-none">
                 <NavLink to={"/todo"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Todo</NavLink>
+              </li> */}
+              <li className="list-none">
+                <NavLink to={"/calender"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Calender</NavLink>
               </li>
               <li className="list-none">
-                <NavLink to={"/AlarmClock"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">AlarmClock</NavLink>
+                <NavLink to={"/regex"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Regex</NavLink>
               </li>
               {/* <li className="list-none">
               <NavLink to={"/currencyconverter"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Currency</NavLink>
@@ -60,9 +63,9 @@ const Navbar = () => {
               {/* <li className="list-none">
                 <NavLink to={"/weather"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Weather</NavLink>
               </li> */}
-              <li className="list-none">
+              {/* <li className="list-none">
                 <NavLink to={"/dictionary"} className="block px-4 py-3 text-black no-underline hover:bg-blue-200 rounded-xl">Dictionary</NavLink>
-              </li>
+              </li> */}
             </ul>
           </nav>
           }

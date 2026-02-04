@@ -245,8 +245,8 @@ function Notepad() {
         Component={<Replacemodal closemodal={closemodal} newword={newword} prevword={prevword} setNewword={setNewword} setPrevword={setPrevword} />}
         duration={150}
         isshowComponent={select}
-        mountAnimationclass={"smooth-entry"}
-        unmountAnimationclass={"smooth-exit"}
+        mountAnimationclass={"tab-enter"}
+        unmountAnimationclass={"tab-exit"}
       />
       <UseAnimation
         Component={<AddTabModal
@@ -257,8 +257,8 @@ function Notepad() {
         />}
         duration={150}
         isshowComponent={showAddTabModal}
-        mountAnimationclass={"smooth-entry"}
-        unmountAnimationclass={"smooth-exit"}
+        mountAnimationclass={"tab-enter"}
+        unmountAnimationclass={"tab-exit"}
       />
 
       {showtab && <div className="flex justify-center items-center pt-5 gap-2">

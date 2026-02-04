@@ -13,6 +13,74 @@
   animation-duration: 0.25s;
 }
 
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-in {
+  animation: modalIn 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-enter {
+  animation: tabEnter 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+
+.tab-exit {
+  animation: tabExit 180ms ease-in forwards;
+  will-change: transform, opacity;
+}
+
+
+@keyframes tabEnter {
+  from {
+    opacity: 0;
+    transform: translateX(16px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes tabExit {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-12px) scale(0.95);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fade 0.2s ease-out;
+}
+
+
 @keyframes entry {
   0% {
     opacity: 0;
@@ -47,7 +115,8 @@
   height: 3rem;
 }
 
-button, .tab {
+button,
+.tab {
   cursor: pointer;
   font-weight: bold;
   color: #000333;
@@ -62,8 +131,7 @@ button:active {
   background-color: #66ada4;
 }
 
-button:hover,
-select:hover {
+button:hover {
   border: 2px solid #005f57;
   transform: scale(1.05);
 }
@@ -79,7 +147,6 @@ select:hover {
   width: 100px;
   height: 40px;
 }
-
 
 .to-do {
   text-align: left;
@@ -118,7 +185,7 @@ select:hover {
   border-radius: 10px;
   margin: 17px;
   padding: 10px;
-  width: 80vw;
+  min-width: 90%;
   min-height: 50vh;
   font-size: larger;
 }
@@ -191,7 +258,7 @@ select:hover {
   height: 50px;
   width: 200px;
   font-size: 20px;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
 }
 
 .buttonalarm,
@@ -200,7 +267,7 @@ select:hover {
   background-color: #b6ccd1;
   opacity: 0.5;
   font-size: 20px;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
   height: 50px;
   width: 200px;
   border: 1px solid rgb(162, 167, 175);
@@ -239,7 +306,7 @@ select:hover {
 /* .dictionary */
 
 .dictionarybox {
-  background-color: #a2f5dc93;
+  background-color: #d5f7ec93;
   border: 1px solid #1249ff52;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -306,10 +373,12 @@ select:hover {
 
 .searchWordbtn:hover {
   transition: 1s ease;
-  background-image: linear-gradient(45deg, #2fffee 0%, #19f0d3 51%, #2fffe3 100%);
+  background-image: linear-gradient(45deg,
+      #2fffee 0%,
+      #19f0d3 51%,
+      #2fffe3 100%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 
 /* currencyBox */
 
